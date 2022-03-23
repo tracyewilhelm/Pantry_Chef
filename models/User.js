@@ -22,7 +22,7 @@ User.init(
   },
   {
     sequelize,
-    modelName: "recipe",
+    modelName: "user",
   }
 );
 

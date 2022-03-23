@@ -1,19 +1,11 @@
 const sequelize = require("../config/connection");
+const seedRecipe = require("./recipeSeedData");
+const seedUser = require("./userSeedData");
 
-const Recipe = require("../models/Recipe");
-const User = require("../models/User");
-
-const recipeSeedData = require("./recipeSeedData.json");
-const userSeedData = require("./userSeedData.json");
-
-const seedDatabase = () => {
-  return sequelize.sync({ force: true }).then(() => {
-    Recipe.bulkCreate(recipeSeedData).then(() => {
-      User.bulkCreate(userSeedData).then(() => {
-        console.log("All Seeds Planted");
-      });
-    });
-  });
+const seedDatabase = async () => {
+  await sequelize.sync({ force: true });
+  await seedRecipe();
+  await seedUser();
 };
 
 seedDatabase();

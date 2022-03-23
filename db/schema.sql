@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS pantryChef_db
+DROP DATABASE IF EXISTS pantryChef_db;
 
-CREATE DATABASE pantryChef_db
+CREATE DATABASE pantryChef_db;
