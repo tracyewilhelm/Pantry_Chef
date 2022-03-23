@@ -13,9 +13,6 @@ router.get("/", async (req, res) => {
         res.json(data.data)
     })
 
-
-    
-
     // We need to include the Recipe model.
     // We want all of the attributes in the recipe model 
     
