@@ -5,11 +5,12 @@ const parser = require("ingredientparserjs");
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
 
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Incorporate the custom helper methods
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({});
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
