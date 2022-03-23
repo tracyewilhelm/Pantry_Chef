@@ -1,0 +1,40 @@
+* {
+    --primary: #3d5852;
+    --secondary: #86938f;
+    --tertiary: #5e877f;
+    --quatrinary: #fd8310;
+    --light: #ffdfb5;
+    --dark: #182c23;
+    --error: rgb(228, 46, 1);
+    --border-radius: 0.3rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+}
+
+html {
+    font-family: 'Architects Daughter', cursive;
+    font-family: 'Overpass', sans-serif;
+    font-family: 'Sansita', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    height: 100px;
+    background-color: var(--quatrinary);
+}
+
+.logo {
+    height: 75px;
+}
+
+.brand {
+    color: var(--light);
+    font-family: 'Sansita', sans-serif;
+    font-size: 75px;
+}
+
+.nav-link {
+    color: #333;
+}
