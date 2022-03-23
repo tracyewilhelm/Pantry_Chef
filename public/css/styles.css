@@ -1,10 +1,10 @@
 * {
-    --primary: #3d5852;
-    --secondary: #86938f;
-    --tertiary: #5e877f;
-    --quatrinary: #fd8310;
-    --light: #ffdfb5;
-    --dark: #182c23;
+    --primary: #ff9000;
+    --secondary: #ffcf91;
+    --tertiary: #0075b3;
+    --quatrinary: #87d5ff;
+    --light: #fde2bf;
+    --dark: #524f4d;
     --error: rgb(228, 46, 1);
     --border-radius: 0.3rem;
     box-sizing: border-box;
@@ -20,9 +20,13 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: var(--light);
+}
+
 .navbar {
     height: 100px;
-    background-color: var(--quatrinary);
+    background-color: var(--primary);
 }
 
 .logo {
@@ -30,11 +34,31 @@ html {
 }
 
 .brand {
-    color: var(--light);
+    color: var(--secondary);
     font-family: 'Sansita', sans-serif;
-    font-size: 75px;
+    font-size: 4.0rem;
 }
 
 .nav-link {
-    color: #333;
+    color: var(--dark);
 }
+
+.card-header {
+    background-color: var(--tertiary);
+}
+
+.card-title {
+    color: var(--quatrinary);
+    font-family: 'Sansita', sans-serif;
+}
+
+.card-text {
+    color: white;
+    font-family: 'Overpass', sans-serif;
+}
+
+.form-check-label {
+    color: var(--tertiary);
+    font-family: 'Architects Daughter', cursive;
+}
+
