@@ -30,16 +30,17 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <div class="navbar-nav d-flex">
                         <a class="nav-link" href="#">Ingredients</a>
-                        <a class="nav-link" href="#">My Recipes</a>
+                        <a class="nav-link" href="#">Recipes</a>
+                        <a class="nav-link" href="#">Sign Up</a>
                         <form class="d-flex row">
                             <div class="col">
-                                <input class="form-control mr-sm-1" type="username" placeholder="Username" aria-label="Username">
+                                <input class="form-control mr-sm-1 username" type="username" placeholder="Username" aria-label="Username">
                             </div>
                             <div class="col">
-                                <input class="form-control mr-sm-1" type="password" placeholder="Password" aria-label="Password">
+                                <input class="form-control mr-sm-1 password" type="password" placeholder="Password" aria-label="Password">
                             </div>
                             <div class="col">
-                                <button class="btn btn-outline-light btn-sm my-1 my-sm-1" type="submit">Log In</button>
+                                <button class="btn btn-outline-light btn-sm my-1 my-sm-1" type="submit" onclick="">Log In</button>
                             </div>
                         </form>
                     </div>
@@ -55,11 +56,11 @@
     <div class="container text-center">
         <img class="img-fluid home-image" src="public/images/home_ingredients.jpg" alt="Ingredients">
         <h1 class="display-4">What's for dinner?</h1>
-        <p class="lead">Pantry Chef is a recipe-finder that helps you use what you already have. Just check off the ingredients you'd like to use from your panty, and we'll find you something good to eat. Log in to save your recipes. 
-        <!-- <a class="btn btn-primary btn-sm" href="#" role="button">Get Started</a> -->
+        <p class="lead">Pantry Chef is a recipe-finder that helps you use what you already have. Just check off the ingredients you'd like to use from your panty, and we'll find you something good to eat. Sign up and log in to save your recipes. 
         </p>
     </div>
 </div>
+
 <!-- Ingredients -->
 <div class="ingredients-container container-fluid row p-4">
     <div class="col-sm-3 mb-3">
@@ -135,12 +136,6 @@
                         Eggplant
                     </label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Courgette
-                    </label>
-                </div>
             </div>
         </div>
     </div>
@@ -162,6 +157,12 @@
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                         Seitan
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Eggs
                     </label>
                 </div>
                 <div class="form-check">
@@ -256,12 +257,6 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
-                        Eggs
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
                         Butter
                     </label>
                 </div>
@@ -316,8 +311,24 @@
             </div>
         </div>
     </div>
+
+    <a class="btn btn-secondary btn-lg mt-3" href="#" role="button">Find Recipes</a>
 </div>
-<!-- Recipes -->
+<!-- Results / My Recipes List -->
+<div class="recipes-container container-fluid row p-4">
+    Recipes:
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">
+            Cras justo odio
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+    </div>
+</div>
+
+<!-- My Recipes -->
 <div class="recipes-container container-fluid row p-4">
     <div class="col-sm-6 mb-3">
         <div class="card shadow rounded" style="width: 38rem;">
