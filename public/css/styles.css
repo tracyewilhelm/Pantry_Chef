@@ -19,6 +19,11 @@ html {
     font-family: 'Sansita', sans-serif;
     scroll-behavior: smooth;
 }
+.section-title {
+    color: white;
+    font-family: 'Sansita', sans-serif;
+    font-size: 3.2rem;
+}
 
 /* Navbar Header */
 .navbar {
@@ -95,6 +100,12 @@ html {
 
 /* Recipe Cards */
 .recipes-container {
+    background-color: var(--tertiary);
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+}
+.myrecipes-container {
     background-color: var(--quatrinary);
     width: 100%;
     margin: 0px;
