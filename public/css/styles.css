@@ -19,15 +19,15 @@ html {
     font-family: 'Sansita', sans-serif;
     scroll-behavior: smooth;
 }
-body {
-    background-color: var(--light);
-}
 
 /* Navbar Header */
 .navbar {
-    height: 100px;
+    height: auto;
     background-color: var(--primary);
     border-bottom: 5px solid var(--dark);
+}
+.nav-container {
+    width: 100%;
 }
 .brand {
     color: var(--secondary);
@@ -44,6 +44,11 @@ body {
 }
 .nav-link {
     color: var(--dark);
+    margin-right: 15px;
+}
+.nav-link:hover {
+    color: var(--primary);
+    background-color: white;
 }
 
 /* Jumbotron */
@@ -52,8 +57,6 @@ body {
     font-family: 'Overpass', sans-serif;
 }
 .home-image{
-    background-image: url("public/images/home_ingredients.jpg");
-    background-color: var(--tertiary);
     height: auto;
     max-height: 450px;
     width: 80%;
@@ -63,7 +66,14 @@ body {
     margin-bottom: 10px;
 }
 
-/* Cards */
+/* Ingredient Cards */
+.ingredients-container {
+    background-color: var(--light);
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 10px;
+}
 .card-header {
     background-color: var(--tertiary);
     /* border: 3px solid white; */
@@ -83,15 +93,37 @@ body {
     font-family: 'Architects Daughter', cursive;
 }
 
+/* Recipe Cards */
+.recipes-container {
+    background-color: var(--quatrinary);
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+}
+.card-img-top {
+    height: auto;
+    max-height: 160px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
 /* Footer */
 .footer {
-    height: 80px;
+    height: auto;
     background-color: #0075b3;
 }
 .footer-link{
     font-family: 'Overpass', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     color: white;
     text-decoration: none;
+    padding: 5px;
     margin: 10px;
+}
+.footer-link:hover {
+    color: var(--tertiary);
+    background-color: white;
 }

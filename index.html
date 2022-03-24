@@ -20,26 +20,26 @@
 <header>
     <div>
         <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <div class="d-flex align-items-center">
+            <div class="nav-container d-flex justify-content-between">
+                <div class="d-flex align-items-center mx-5">
                     <a class="home-link" href="index.html">
                         <img class="logo m-1" src="public/images/PantryChefLogoWhite.png" alt="">
                     </a>
                     <span class="brand">Pantry Chef</span>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <div class="navbar-nav d-flex justify-content-end">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav d-flex">
                         <a class="nav-link" href="#">Ingredients</a>
                         <a class="nav-link" href="#">My Recipes</a>
                         <form class="d-flex row">
                             <div class="col">
-                                <input class="form-control mr-sm-2" type="username" placeholder="Username" aria-label="Username">
+                                <input class="form-control mr-sm-1" type="username" placeholder="Username" aria-label="Username">
                             </div>
                             <div class="col">
-                                <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">
+                                <input class="form-control mr-sm-1" type="password" placeholder="Password" aria-label="Password">
                             </div>
                             <div class="col">
-                                <button class="btn btn-outline-light btn-sm my-2 my-sm-0" type="submit">Log In</button>
+                                <button class="btn btn-outline-light btn-sm my-1 my-sm-1" type="submit">Log In</button>
                             </div>
                         </form>
                     </div>
@@ -50,18 +50,19 @@
 </header>    
 
 <body>
-    <div class="jumbotron jumbotron-fluid p-4">
-        <div class="container text-center">
-            <img class="img-fluid home-image" src="public/images/home_ingredients.jpg" alt="Ingredients">
-            <h1 class="display-4">What's for dinner?</h1>
-            <p class="lead">Pantry Chef is a recipe-finder that helps you use what you already have. Just check off the ingredients you'd like to use from your panty, and we'll find you something good to eat. Log in to save your recipes. 
-                <!-- <a class="btn btn-primary btn-sm" href="#" role="button">Get Started</a> -->
-            </p>
-            </div>
-        </div>
-
-<div class="container-fluid row m-3">
-    <div class="col-sm-3 mb-5">
+<!-- Homepage -->
+<div class="jumbotron jumbotron-fluid p-4">
+    <div class="container text-center">
+        <img class="img-fluid home-image" src="public/images/home_ingredients.jpg" alt="Ingredients">
+        <h1 class="display-4">What's for dinner?</h1>
+        <p class="lead">Pantry Chef is a recipe-finder that helps you use what you already have. Just check off the ingredients you'd like to use from your panty, and we'll find you something good to eat. Log in to save your recipes. 
+        <!-- <a class="btn btn-primary btn-sm" href="#" role="button">Get Started</a> -->
+        </p>
+    </div>
+</div>
+<!-- Ingredients -->
+<div class="ingredients-container container-fluid row p-4">
+    <div class="col-sm-3 mb-3">
         <div class="card shadow rounded" style="width:250px;">
             <div class="card-header p-3">
                 <h5 class="card-title">Vegetables</h5>
@@ -144,7 +145,7 @@
         </div>
     </div>
     
-    <div class="col-sm-3 mb-5">
+    <div class="col-sm-3 mb-3">
         <div class="card shadow rounded" style="width:250px;">
             <div class="card-header p-3">
                 <h5 class="card-title">Proteins</h5>
@@ -245,7 +246,7 @@
         </div>
     </div>
 
-    <div class="col-sm-3 mb-5">
+    <div class="col-sm-3 mb-3">
         <div class="card shadow rounded" style="width:250px;">
             <div class="card-header p-3">
                 <h5 class="card-title">Dairy</h5>
@@ -315,13 +316,65 @@
             </div>
         </div>
     </div>
-
 </div>
+<!-- Recipes -->
+<div class="recipes-container container-fluid row p-4">
+    <div class="col-sm-6 mb-3">
+        <div class="card shadow rounded" style="width: 38rem;">
+            <img class="card-img-top" src="public/images/beef_enchiladas.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #ff9000">Beef Enchilada Casserole</h5>
+                <p class="card-text" style="color: #ffcf91">60 minutes</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">8 flour tortillas</li>
+                <li class="list-group-item">1 lb ground beef</li>
+                <li class="list-group-item">1 can mild enchilada sauce</li>
+                <li class="list-group-item">1 can black bean and corn salsa</li>
+                <li class="list-group-item">2 cups shredded cheddar cheese</li>
+            </ul>
+            <div class="card-body">
+                <p>1. Heat oven to 350*F.</p>
+                <p>2. Fold tortillas in half and place folded side down in dish and set aside.</p>
+                <p>3. cook ground beef over medium high heat until no longer pink. add 1/4 cup enchilada sauce, bean and corn salsa, and 1 cup of shredded cheese. Stir to combine.</p>
+                <p>4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam is facing down.</p>
+                <p>5. Top with remaining enchilada sauce and cheese. Cover with foil and bake 40-45 minutes.</p>
+                <a class="btn btn-primary btn-sm" href="#" role="button">Save Recipe</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-5 mb-3">
+        <div class="card" style="width: 38rem;">
+            <img class="card-img-top" src="public/images/pancakes.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #ff9000">Chocolate Chip Pancakes</h5>
+                <p class="card-text" style="color: #ffcf91">8-10 minutes</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">1 egg</li>
+                <li class="list-group-item">1 cup milk</li>
+                <li class="list-group-item">1 cup flour</li>
+                <li class="list-group-item">1 T baking powder</li>
+                <li class="list-group-item">1/2 cup chocolate chips</li>
+            </ul>
+            <div class="card-body">
+                <p>1. Heat gridle on medium-low heat.</p>
+                <p>2. In medium sized bowl whisk egg.</p>
+                <p>3. Add flour, milk, and baking powder, and stir until mixed.</p>
+                <p>4. Pour 1/4 cup of mix on hot gridle, place 5-7 chocolate chips in circle of batter.</p>
+                <p>5. Cook pancake for 2 minutes and then flip. Cook for another minute. Remove from griddle and enjoy.</p>
+                <a class="btn btn-primary btn-sm" href="#" role="button">Save Recipe</a>
+            </div>
+        </div>
+    </div>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-
+<!-- Credits -->
 <footer class="footer">
-    <ul class="nav justify-content-center align-items-center">
+    <ul class="nav justify-content-center align-items-center p-3">
         <li class="nav-item">
             <a class="footer-link" href="https://github.com/Lumin-El" target="_blank">Joel Vazquez</a>
         </li>
