@@ -19,6 +19,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    recpList: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
