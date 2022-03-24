@@ -1,7 +1,7 @@
 //GET the log-in page
 
 const router = require("express").Router();
-const { User } = require("../models");
+const { User } = require("../../models");
 
 //get all users
 router.get("/", async (req, res) => {
@@ -49,6 +49,17 @@ router.get("/", async (req, res) => {
 //   } catch (err) {
 //     console.log(err);
 //     res.status(500).json(err);
+//   }
+// });
+
+// // Logout
+// router.post('/logout', (req, res) => {
+//   if (req.session.loggedIn) {
+//     req.session.destroy(() => {
+//       res.status(204).end();
+//     });
+//   } else {
+//     res.status(404).end();
 //   }
 // });
 
