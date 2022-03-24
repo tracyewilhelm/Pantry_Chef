@@ -1,7 +1,7 @@
 //GET the log-in page
 
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Favorites } = require("../../models");
 
 //get all users
 router.get("/", async (req, res) => {
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const userDB = await User.findByPk(req.params.id, {
-      include: [{ model: Favorites, attributes: id }],
+      include: [Favorites],
     });
     const recpList = userDB.get({ plain: true });
     res.render("favorites", {
@@ -53,6 +53,7 @@ router.post("/login", async (req, res) => {
     }
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user = userSearch;
       console.log("session saved", req.session.cookie);
 
       res
@@ -75,5 +76,38 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
+
+//adding a favorite recipe
+//first they click on the save button. If they are not logged in, ask them to log in. If they are logged in 1. pull user_id from the req.session; 2. figure out what they clicked on (from the req.body). Then we need to query our favorites table to see if that recipe already exists in it (use the recipe id to check this); If it does exit, go to next step; if it doesn't exist, add it to the favorites table. Next step is to get user by id (from the req.session), and do an update in order to add the favorite to the through-table that it has created on its own (userfavorite?)
+router.put("/addFavorite", async (req, res) => {
+  const userId = req.session.user.id; //this gives us the user id from the url that they logged in as
+  const recipeID = req.body.recipeID; //make sure this recipeID matches where they've captured in on the front end
+  //this is searching for our user by their user id
+  const userObj = await User.findOne({
+    where: {
+      id: userId,
+    },
+  });
+  //searching the Favorites table inside of the db for a recipe id that matches what we've pulled from the front end (what the user clicked on to favorite it)
+  const recipeSearch = await Favorites.findOne({
+    where: {
+      id: recipeID,
+    },
+  });
+  //if there is not a recipe currently in the favorites table in our db then please add it by the recipeID
+  if (!recipeSearch) {
+    const newFav = await Favorites.create({
+      id: recipeID,
+    });
+    //add the newFav recipe by it's recipe ID and match it to our user (that we have found by their id) and putting it in the through table that we called userFavorites (this is your mystery table)
+    userObj.addFavorite(newFav);
+    res.status(200).send("recipe added");
+  } else {
+    userObj.addFavorite(recipeSearch);
+    res.status(200).send("recipe added");
+  }
+});
+
+//user wants to delete a recipe - first we pull up the data by the user id (get the userObj) that shows all of the user's favorites; get the user obj and run a remove method (line 103/106)
 
 module.exports = router;
