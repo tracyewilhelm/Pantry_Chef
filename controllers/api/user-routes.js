@@ -3,7 +3,7 @@
 const router = require("express").Router();
 const { User, Favorites } = require("../../models");
 
-//get all users
+//get all users - comment this out
 router.get("/", async (req, res) => {
   console.log("hello?");
   let userData = await User.findAll({});
