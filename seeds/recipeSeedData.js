@@ -10,7 +10,7 @@ const recipeData = [
     ingredient_four: "1 can black and corn salsa",
     ingredient_five: "2 cups shredded cheddar cheese",
     directions:
-      "1. Heat oven to 350*F; 2. Fold tortillas in half and place folded side down in dish and set aside; 3. cook ground beef over medium high heat until no longer pink. add 1/4 cup enchilada sauce, bean and corn salsa, and 1 cup of shredded cheese. Stir to combine; 4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam is facing down; 5. Top with remaining enchilada sauce and cheese. Cover with foil and bake 40-45 minutes",
+      "1. Heat oven to 350*F; 2. Fold tortillas in half and place folded side down in dish and set aside; 3. cook ground beef over medium high heat until no longer pink. add 1/4 cup enchilada sauce, bean and corn salsa, and 1 cup of shredded cheese. Stir to combine; 4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam is facing down; 5. Top with remaining enchilada sauce and cheese. Cover with foil and bake until cheese is bubbly",
   },
   {
     recipe_name: "sheep herders pie",
