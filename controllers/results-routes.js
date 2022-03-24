@@ -2,6 +2,10 @@
 const axios = require("axios");
 const router = require("express").Router();
 
+// How do I get the checked ingredients stored in a variable and inserted into the template literal?
+// Readme generator or inquirer 
+
+// How do I display the recipe a user has clicked on from the results page?
 
 
 
@@ -12,15 +16,6 @@ router.get("/", async (req, res) => {
         console.log(data.data)
         res.json(data.data)
     })
-
-    // We need to include the Recipe model.
-    // We want all of the attributes in the recipe model 
-    
-    
-    // Sequelize 
-    // const recipes = dbRecipeData.map((recipe) =>
-    //   recipe.get({ plain: true })
-    // );
 
     // We need to render the results page.
 
