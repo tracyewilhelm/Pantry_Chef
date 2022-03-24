@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <div class="navbar-nav d-flex">
                         <a class="nav-link" href="#">Ingredients</a>
-                        <a class="nav-link" href="#">Recipes</a>
+                        <a class="nav-link" href="#">My Recipes</a>
                         <a class="nav-link" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</a>
                         <form class="d-flex row">
                             <div class="col">
@@ -63,41 +63,35 @@
 
 <!-- Sign Up Modal -->
     <div id="id01" class="modal">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
         <form class="modal-content animate" action="/action_page.php">
-            <div class="container">
-                <label><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
- 
-                <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
- 
-                <label><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                <input type="checkbox"> Remember me
-                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
- 
-                <div class="clearfix">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <button type="submit" class="signupbtn">Sign Up</button>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create New User:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"aria-hidden="true">&#10006</span>
+                </button>
+            </div>
+            <div class="container d-flex flex-column align-items-end">
+                <div class="mt-2">
+                    <label><b>Username</b></label>
+                    <input type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="mt-2">
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                </div>
+                <div class="mt-2">
+                    <label><b>Repeat Password</b></label>
+                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                </div>
+            </div>
+            <div class="modal-footer mt-2">
+                <div>
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
                 </div>
             </div>
         </form>
     </div>
- 
-    <!--close the modal by just clicking outside of the modal-->
-    <script>
-        var modal = document.getElementById('id01');
- 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
-
-
 
 <!-- Ingredients -->
 <div class="ingredients-container container-fluid row p-4">
@@ -352,7 +346,7 @@
 </div>
 
 <!-- Results / My Recipes List -->
-<div class="recipes-container container-fluid row p-4">
+<div class="recipelist-container container-fluid row p-4">
     <h1 class="section-title">Results:</h1>
     <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action">
@@ -365,9 +359,9 @@
     </div>
 </div>
 
-<!-- My Recipes -->
-<div class="myrecipes-container container-fluid row p-4">
-    <h1 class="section-title">My Recipes:</h1>
+<!-- Recipes -->
+<div class="recipes-container container-fluid row p-4">
+    <h1 class="section-title">Recipes:</h1>
     <div class="col-sm-6 mb-3">
         <div class="card shadow rounded" style="width: 38rem;">
             <img class="card-img-top" src="public/images/beef_enchiladas.jpg" alt="Card image cap">
@@ -388,7 +382,7 @@
                 <p>3. cook ground beef over medium high heat until no longer pink. add 1/4 cup enchilada sauce, bean and corn salsa, and 1 cup of shredded cheese. Stir to combine.</p>
                 <p>4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam is facing down.</p>
                 <p>5. Top with remaining enchilada sauce and cheese. Cover with foil and bake 40-45 minutes.</p>
-                <a class="btn btn-primary btn-sm" href="#" role="button">Save Recipe</a>
+                <a class="btn btn-primary btn-sm" href="#" role="button">My Recipes</a>
             </div>
         </div>
     </div>
@@ -408,12 +402,12 @@
                 <li class="list-group-item">1/2 cup chocolate chips</li>
             </ul>
             <div class="card-body">
-                <p>1. Heat gridle on medium-low heat.</p>
+                <p>1. Heat griddle on medium-low heat.</p>
                 <p>2. In medium sized bowl whisk egg.</p>
                 <p>3. Add flour, milk, and baking powder, and stir until mixed.</p>
                 <p>4. Pour 1/4 cup of mix on hot gridle, place 5-7 chocolate chips in circle of batter.</p>
                 <p>5. Cook pancake for 2 minutes and then flip. Cook for another minute. Remove from griddle and enjoy.</p>
-                <a class="btn btn-primary btn-sm" href="#" role="button">Save Recipe</a>
+                <a class="btn btn-primary btn-sm" href="#" role="button">My Recipes</a>
             </div>
         </div>
     </div>
