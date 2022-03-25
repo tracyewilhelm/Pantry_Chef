@@ -18,11 +18,12 @@ const ingFormHandler = async function (event) {
   const apiString = selected.join(",+");
   console.log(apiString);
 
+
   //now that we have our string, make our call to the spoonacular api here and use await
   const spoonData = await fetch(
-    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+sugar,+cinnamon&ranking=1`
+    // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+sugar,+cinnamon&ranking=1`
 
-    // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${SPOONACULAR_TOKEN}&ingredients=${apiString}&ranking=1&includeInstructions=true`
+    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${apiString}&ranking=1&includeInstructions=true`
   );
 
   //now make your call to the back end with your data
