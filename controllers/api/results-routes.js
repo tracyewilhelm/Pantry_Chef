@@ -9,7 +9,11 @@ router.get("/", async (req, res) => {
   const spoonData = req.body;
   console.log(spoonData);
   try {
-    res.render("results", { spoonData });
+    res.render("results", {
+      spoonData,
+      userID: req.session.user?.id || 0,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
