@@ -20,31 +20,37 @@
 <header>
     <div>
         <nav class="navbar navbar-expand-lg">
-            <div class="nav-container d-flex justify-content-between">
-                <div class="d-flex align-items-center mx-5">
-                    <a class="home-link" href="index.html">
-                        <img class="logo m-1" src="public/images/PantryChefLogoWhite.png" alt="">
-                    </a>
-                    <span class="brand">Pantry Chef</span>
-                </div>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <div class="navbar-nav d-flex">
+            <a class="navbar-brand brand" href="index.html">
+                    <img class="logo m-1" src="public/images/PantryChefLogoWhite.png" alt="">
+            </a>
+            <span class="logotext">Pantry Chef</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                
+            <div class="collapse navbar-collapse" id="navCollapse">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
                         <a class="nav-link" href="#">Ingredients</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">My Recipes</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</a>
-                        <form class="d-flex row">
-                            <div class="col">
-                                <input class="form-control mr-sm-1 username" type="username" placeholder="Username" aria-label="Username">
-                            </div>
-                            <div class="col">
-                                <input class="form-control mr-sm-1 password" type="password" placeholder="Password" aria-label="Password">
-                            </div>
-                            <div class="col">
-                                <button class="btn btn-outline-light btn-sm my-1 my-sm-1" type="submit" onclick="">Log In</button>
-                            </div>
-                        </form>
+                    </li>
+                </ul>
+                <form class="d-flex row login-form">
+                    <div class="col">
+                        <input class="form-control mr-sm-1 username" type="username" placeholder="Username" aria-label="Username" id="username-login" required>
                     </div>
-                </div>
+                    <div class="col">
+                        <input class="form-control mr-sm-1 password" type="password" placeholder="Password" aria-label="Password" id="password-login" required>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-outline-light btn-sm my-1 my-sm-1" type="submit" onclick="">Log In</button>
+                    </div>
+                </form>
             </div>
         </nav>
     </div>
@@ -63,7 +69,7 @@
 
 <!-- Sign Up Modal -->
     <div id="id01" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
+        <form class="modal-content animate signup-form" action="/action_page.php">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Create New User:</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -73,11 +79,11 @@
             <div class="container d-flex flex-column align-items-end">
                 <div class="mt-2">
                     <label><b>Username</b></label>
-                    <input type="text" placeholder="Username" name="username" required>
+                    <input type="text" placeholder="Username" name="username" required id="username-signup">
                 </div>
                 <div class="mt-2">
                     <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" placeholder="Enter Password" name="psw" id="password-signup" required>
                 </div>
                 <div class="mt-2">
                     <label><b>Repeat Password</b></label>
