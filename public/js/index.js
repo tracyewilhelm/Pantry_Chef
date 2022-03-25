@@ -1,13 +1,13 @@
-require("dotenv").config();
 //define a variable that then
 const ingredientEl = document.querySelector("#ingredient-form");
-
+console.log(ingredientEl);
 //in this file you make the api all to spoonacula, once you have that data from your user input you then make your fetch post to you controller route. Once you have that string
 //you then send your data to your fetch
 
 const ingFormHandler = async function (event) {
   event.preventDefault();
-
+  console.log($(this).data("api"));
+  const apiKey = $(this).data("api");
   let checkedEl = $("input:checked");
   let selected = [];
 
@@ -20,7 +20,7 @@ const ingFormHandler = async function (event) {
 
   //now that we have our string, make our call to the spoonacular api here and use await
   const spoonData = await fetch(
-    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=apples,+sugar,+cinnamon&ranking=1`
+    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+sugar,+cinnamon&ranking=1`
 
     // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${SPOONACULAR_TOKEN}&ingredients=${apiString}&ranking=1&includeInstructions=true`
   );
@@ -39,5 +39,3 @@ const ingFormHandler = async function (event) {
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);
-
-module.exports = spoonData;

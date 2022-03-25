@@ -12,17 +12,21 @@ router.get("/", async (req, res) => {
 
 //get user by id
 router.get("/:id", async (req, res) => {
-  try {
-    const userDB = await User.findByPk(req.params.id, {
-      include: [Favorites],
-    });
-    const recpList = userDB.get({ plain: true });
-    res.render("favorites", {
-      recpList,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+  if (req.session.loggedIn) {
+    try {
+      const userDB = await User.findByPk(req.params.id, {
+        include: [Favorites],
+      });
+      const recpList = userDB.get({ plain: true });
+      res.render("favorites", {
+        recpList,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  } else {
+    res.render("homepage", { message: "Please log in" });
   }
 });
 

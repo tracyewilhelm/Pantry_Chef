@@ -44,7 +44,11 @@
                 <p>3. cook ground beef over medium high heat until no longer pink. add 1/4 cup enchilada sauce, bean and corn salsa, and 1 cup of shredded cheese. Stir to combine.</p>
                 <p>4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam is facing down.</p>
                 <p>5. Top with remaining enchilada sauce and cheese. Cover with foil and bake 40-45 minutes.</p> --}}
-                <a href="/api/users/:id" class="btn btn-primary btn-sm" role="button">My Recipes</a>
+                {{#if loggedIn }}
+                <a href="/api/users/{{userID}}" class="btn btn-primary btn-sm" role="button">My Recipes</a>
+                {{else }}
+                <button  class="btn btn-primary btn-sm" disabled >Please log in to view recipes</button>
+                {{/if}}
             </div>
         </div>
     </div>

@@ -1,41 +1,8 @@
-<header>
-    <div>
-        <nav class="navbar navbar-expand-lg">
-            <div class="nav-container d-flex justify-content-between">
-                <div class="d-flex align-items-center mx-5">
-                    <a class="home-link" href="index.html">
-                        <img class="logo m-1" src="public/images/PantryChefLogoWhite.png" alt="">
-                    </a>
-                    <span class="brand">Pantry Chef</span>
-                </div>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <div class="navbar-nav d-flex">
-                        <a class="nav-link" href="#">Ingredients</a>
-                        <a class="nav-link" href="#">Recipes</a>
-                        <a class="nav-link" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</a>
-                        <form class="d-flex row">
-                            <div class="col">
-                                <input class="form-control mr-sm-1 username" type="username" placeholder="Username" aria-label="Username">
-                            </div>
-                            <div class="col">
-                                <input class="form-control mr-sm-1 password" type="password" placeholder="Password" aria-label="Password">
-                            </div>
-                            <div class="col">
-                                <button class="btn btn-outline-light btn-sm my-1 my-sm-1" type="submit" onclick="">Log In</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-</header>    
-
 <body>
 <!-- Homepage -->
 <div class="jumbotron jumbotron-fluid p-4">
     <div class="container text-center">
-        <img class="img-fluid home-image" src="public/images/home_ingredients.jpg" alt="Ingredients">
+        <img class="img-fluid home-image" src="images/home_ingredients.jpg" alt="Ingredients">
         <h1 class="display-4">What's for dinner?</h1>
         <p class="lead">Pantry Chef is a recipe-finder that helps you use what you already have. Just check off the ingredients you'd like to use from your pantry, and we'll find you something good to eat. Sign up and log in to save your recipes. 
         </p>
@@ -78,6 +45,8 @@
     </script>
 
 <div class="ingredients-container container-fluid row p-4">
+    <h1 class="section-title">Ingredients:</h1>
+    <form id="ingredient-form" data-api={{API_KEY}}>
     <div class="col-sm-3 mb-3">
         <div class="card shadow rounded" style="width:250px;">
             <div class="card-header p-3">
@@ -708,5 +677,7 @@
         </div>
     </div>
 
-    <a class="btn btn-secondary btn-lg mt-3"  role="button">Find Recipes</a>
+    <button class="btn btn-secondary btn-lg mt-3"  type="submit" >Find Recipes</button>
+    </form>
 </div>
+
