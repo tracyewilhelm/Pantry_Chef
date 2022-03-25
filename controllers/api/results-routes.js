@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   // Results of user search.
   const recipeData = await axios
     .get(
-      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=d7b803c21feb41b7b01d22f464050ff6&ingredients=${apiString}&ranking=1`
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=d7b803c21feb41b7b01d22f464050ff6&ingredients=${apiString}&ranking=1&includeInstructions=true`
     )
     .then((data) => {
       console.log(data.data);
