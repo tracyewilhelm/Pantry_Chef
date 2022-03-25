@@ -35,7 +35,7 @@ const ingFormHandler = async function (event) {
   });
 
   // console.log(selected)
-  // document.location.replace("/results");
+  location.replace("/api/results");
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);
