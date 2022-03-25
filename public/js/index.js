@@ -1,8 +1,6 @@
-const formEl = $("#ingredient-form");
-
-function handleFormSubmit(event) {
+const ingFormHandler = async function(event) {
     event.preventDefault();
-    
+
     let checkedEl = $("input:checked");
     let selected = [];
 
@@ -10,38 +8,28 @@ function handleFormSubmit(event) {
         selected.push($(this).val())
         
     })
-    console.log(selected);
 
-    fetch("/api/results", {
-        method: "POST"
+    const apiString =selected.join(",+");
+    console.log(apiString);
+    
+
+    await fetch(`/api/results`, {
+        method: "POST",
+        body: JSON.stringify({
+            apiString
+        }),
+        headers: { "Content-Type": "application/json"},
     })
-    .then(function (response) {
-        return response.json();
-    })
+    // console.log(selected)
+    document.location.replace("/results");
 }
 
-
-formEl.on("submit", handleFormSubmit);
-
-
-
+document
+    .querySelector("#ingredient-form")
+    .addEventListener("submit", ingFormHandler);
 
 
-// const resultsBtn = document.getElementById
-
-// const checkedIngredients = document.getElementsByClassName("form-check")
-// console.log(checkedIngredients);
-
-// checkedIngredients.addEventListener("click", event => {
-//     event.preventDefault();
-    
-//     if (checkedIngredients.checked) {
-//         console.log(checkedIngredients.value)
-//         return(checkedIngredients.value)
-//     }
-// })
-
-
+module.exports = apiString;
 
     //How do I grab the user's checked ingredients?
 
