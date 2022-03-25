@@ -40,6 +40,9 @@ const ingFormHandler = async function (event) {
   });
   const recipeData = await results.json()
    console.log(recipeData)
+
+   // recipeData is an array of 10 objects
+   
 //    location.replace("/api/results");
 };
 
