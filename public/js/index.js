@@ -18,7 +18,6 @@ const ingFormHandler = async function (event) {
   const apiString = selected.join(",+");
   console.log(apiString);
 
-
   //now that we have our string, make our call to the spoonacular api here and use await
   const spoonData = await fetch(
     // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+sugar,+cinnamon&ranking=1`
@@ -26,9 +25,14 @@ const ingFormHandler = async function (event) {
     `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${apiString}&ranking=1&includeInstructions=true`
   );
 
-    const recipes = await spoonData.json()
-    console.log(recipes)
+  const recipes = await spoonData.json();
+  console.log("recipes line 29");
+  console.log(recipes);
 
+  console.log(recipes[1].title);
+
+  const summary = recipes.map(({ title, id }) => ({ title, id }));
+  console.log(summary);
 
   //now make your call to the back end with your data
   const results = await fetch(`/api/results`, {
@@ -38,9 +42,53 @@ const ingFormHandler = async function (event) {
     }),
     headers: { "Content-Type": "application/json" },
   });
-  const recipeData = await results.json()
-   console.log(recipeData)
-//    location.replace("/api/results");
+
+  const recipeData = await results.json();
+  console.log(recipeData);
+
+  //recipeData is an array of 10 objects
+
+  //    location.replace("/api/results");
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);
+
+// recipes.forEach((recipes.title) => console.log(recipes.title));
+// console.log(titleAndID);
+
+//we know that recipes is an array of objects. We want to destructure each object in that array into individual recipes
+
+// function recpTitle(recipes, title) {
+//   let recpTitle = recipes.map((item) => item[title]);
+//   return recpTitle;
+// }
+// const titleResult = recpTitle(recipes, "title");
+// console.log("Title Result");
+// console.log(titleResult);
+
+// function recpID(recipes, id) {
+//   let recpID = recipes.map((item) => item[id]);
+//   return recpID;
+// }
+// const recpIDResult = recpID(recipes, "id");
+// console.log("Recipe ID Result");
+// console.log(recpIDResult);
+
+// recpObjOne = {
+//   title: titleResult[0],
+//   IDofRecipe: recpIDResult[0],
+// };
+// console.log("RecpObj that combines Title Result and Recipe ID Result");
+// console.log(recpObjOne);
+
+// const titleAndID = [];
+// const getTandID = recipes.map((moreData) => {
+//   const recipeObj = { ...moreData };
+//   console.log("recipeObj that breaks out 10 objects of individual recipes");
+//   console.log(recipeObj);
+//   titleAndID.push(recipeObj);
+//   return recipeObj;
+// });
+// // console.log(recipeObj);
+// console.log(getTandID);
+// console.log(titleAndID);
