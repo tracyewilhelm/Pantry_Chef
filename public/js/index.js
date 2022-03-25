@@ -1,37 +1,43 @@
-const ingFormHandler = async function(event) {
-    event.preventDefault();
+require("dotenv").config();
+//define a variable that then
+const ingredientEl = document.querySelector("#ingredient-form");
 
-    let checkedEl = $("input:checked");
-    let selected = [];
+//in this file you make the api all to spoonacula, once you have that data from your user input you then make your fetch post to you controller route. Once you have that string
+//you then send your data to your fetch
 
-    $.each(checkedEl, function () {
-        selected.push($(this).val())
-        
-    })
+const ingFormHandler = async function (event) {
+  event.preventDefault();
 
-    const apiString =selected.join(",+");
-    console.log(apiString);
-    
+  let checkedEl = $("input:checked");
+  let selected = [];
 
-    await fetch(`/api/results`, {
-        method: "POST",
-        body: JSON.stringify({
-            apiString
-        }),
-        headers: { "Content-Type": "application/json"},
-    })
-    // console.log(selected)
-    // document.location.replace("/results");
-}
+  $.each(checkedEl, function () {
+    selected.push($(this).val());
+  });
 
-document
-.querySelector("#ingredient-form")
-.addEventListener("submit", ingFormHandler);
+  const apiString = selected.join(",+");
+  console.log(apiString);
 
+  //now that we have our string, make our call to the spoonacular api here and use await
+  const spoonData = await fetch(
+    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=apples,+sugar,+cinnamon&ranking=1`
 
-module.exports = apiString;
+    // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${SPOONACULAR_TOKEN}&ingredients=${apiString}&ranking=1&includeInstructions=true`
+  );
 
-    //How do I grab the user's checked ingredients?
+  //now make your call to the back end with your data
+  await fetch(`/api/results`, {
+    method: "POST",
+    body: JSON.stringify({
+      spoonData,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
 
+  // console.log(selected)
+  // document.location.replace("/results");
+};
 
-// When the user hits the get recipes button, we need to grab the checked ingredients.
+ingredientEl.addEventListener("submit", ingFormHandler);
+
+module.exports = spoonData;
