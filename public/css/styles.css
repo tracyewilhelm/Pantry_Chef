@@ -27,29 +27,26 @@ html {
 
 /* Navbar Header */
 .navbar {
-    height: auto;
     background-color: var(--primary);
     border-bottom: 5px solid var(--dark);
 }
-.nav-container {
-    width: 100%;
-}
 .brand {
-    color: var(--secondary);
-    font-family: 'Sansita', sans-serif;
-    text-decoration: none;
-    font-size: 3.2rem;
-}
-.home-link{
     text-decoration: none;
 }
 .logo {
     height: 75px;
     width: 75px;
 }
+.logotext {
+    color: var(--secondary);
+    font-family: 'Sansita', sans-serif;
+    text-decoration: none;
+    font-size: 3.2rem;
+}
 .nav-link {
     color: var(--dark);
-    margin-right: 15px;
+    min-width: 6rem;
+    margin: 0 15px;
 }
 .nav-link:hover {
     color: var(--primary);
