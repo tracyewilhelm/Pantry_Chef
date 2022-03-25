@@ -26,17 +26,21 @@ const ingFormHandler = async function (event) {
     `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${apiString}&ranking=1&includeInstructions=true`
   );
 
+    const recipes = await spoonData.json()
+    console.log(recipes)
+
+
   //now make your call to the back end with your data
-  await fetch(`/api/results`, {
+  const results = await fetch(`/api/results`, {
     method: "POST",
     body: JSON.stringify({
       spoonData,
     }),
     headers: { "Content-Type": "application/json" },
   });
-
-  // console.log(selected)
-  location.replace("/api/results");
+  const recipeData = await results.json()
+   console.log(recipeData)
+//    location.replace("/api/results");
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);
