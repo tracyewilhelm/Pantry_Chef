@@ -21,12 +21,12 @@ const ingFormHandler = async function(event) {
         headers: { "Content-Type": "application/json"},
     })
     // console.log(selected)
-    document.location.replace("/results");
+    // document.location.replace("/results");
 }
 
 document
-    .querySelector("#ingredient-form")
-    .addEventListener("submit", ingFormHandler);
+.querySelector("#ingredient-form")
+.addEventListener("submit", ingFormHandler);
 
 
 module.exports = apiString;
