@@ -34,8 +34,8 @@ const ingFormHandler = async function (event) {
     headers: { "Content-Type": "application/json" },
   });
 
-  // console.log(selected)
-  location.replace("/api/results");
+  console.log(spoonData);
+  // await location.replace("/api/results");
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);

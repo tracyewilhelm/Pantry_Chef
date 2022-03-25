@@ -6,7 +6,7 @@ const router = require("express").Router();
 router.get("/", async (req, res) => {
   // Results of user search.
   //now our data will be on req.body
-  const spoonData = req.body;
+  const spoonData = req.body.title; // we want just the title from the data that was returned using the api call
   console.log(spoonData);
   try {
     res.render("results", {
@@ -21,3 +21,5 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
+
+//we want to pull out the title and image(?) from the req.body
