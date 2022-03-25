@@ -20,13 +20,16 @@ const ingFormHandler = async function (event) {
 
   //now that we have our string, make our call to the spoonacular api here and use await
   const spoonData = await fetch(
-    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+sugar,+cinnamon&ranking=1`
+    // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+sugar,+cinnamon&ranking=1`
 
-    // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${SPOONACULAR_TOKEN}&ingredients=${apiString}&ranking=1&includeInstructions=true`
+    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${apiString}&ranking=1&includeInstructions=true`
   );
 
+  const recipes = await spoonData.json();
+  console.log(recipes);
+
   //now make your call to the back end with your data
-  await fetch(`/api/results`, {
+  const results = await fetch(`/api/results`, {
     method: "POST",
     body: JSON.stringify({
       spoonData,
@@ -34,8 +37,9 @@ const ingFormHandler = async function (event) {
     headers: { "Content-Type": "application/json" },
   });
 
-  console.log(spoonData);
-  // await location.replace("/api/results");
+  const recipeData = await results.json();
+  console.log(recipeData);
+  //    location.replace("/api/results");
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);

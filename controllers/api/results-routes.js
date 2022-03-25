@@ -20,6 +20,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id")
+
 module.exports = router;
 
 //we want to pull out the title and image(?) from the req.body

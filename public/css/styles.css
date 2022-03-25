@@ -19,6 +19,9 @@ html {
     font-family: 'Sansita', sans-serif;
     scroll-behavior: smooth;
 }
+body {
+    margin-top: 110px;
+}
 .section-title {
     color: white;
     font-family: 'Sansita', sans-serif;
@@ -43,15 +46,25 @@ html {
     text-decoration: none;
     font-size: 3.2rem;
 }
+@media screen and (max-width: 1330px) {
+    .logotext {
+        font-size: 2.0rem;
+        min-width: 200px ;
+    }
+}
 .nav-link {
     color: var(--dark);
     min-width: 6rem;
-    margin: 0 15px;
+    margin-left: 15px;
+    justify-content: center;
 }
 .nav-link:hover {
     color: var(--primary);
     background-color: white;
 }
+/* .navbar-toggler-icon {
+    background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
+} */
 
 /* Sign Up Modal */
 .modal {
