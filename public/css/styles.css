@@ -5,7 +5,7 @@
     --quatrinary: #87d5ff;
     --light: #fde2bf;
     --neutral: #C7C3BF;
-    --dark: #524f4d;
+    --dark: #5f4b3e;
     --error: rgb(228, 46, 1);
     --border-radius: 0.3rem;
     box-sizing: border-box;
@@ -62,9 +62,9 @@ body {
     color: var(--primary);
     background-color: white;
 }
-/* .navbar-toggler-icon {
+.navbar-toggler-icon {
     background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
-} */
+}
 
 /* Sign Up Modal */
 .modal {
