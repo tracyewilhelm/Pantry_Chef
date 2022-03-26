@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
   const spoonData = req.body.title; // we want just the title from the data that was returned using the api call
   console.log(spoonData);
   try {
-    res.render("results", {
+    res.render("userpage", {
       spoonData,
       userID: req.session.user?.id || 0,
       loggedIn: req.session.loggedIn,

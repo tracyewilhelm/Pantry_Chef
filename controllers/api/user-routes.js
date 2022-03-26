@@ -80,25 +80,6 @@ router.post("/logout", (req, res) => {
   }
 });
 
-//create new user
-router.post("/", async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      user_name: req.body.username,
-      user_password: req.body.password,
-    });
-
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res.status(200).json(dbUserData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
 //adding a favorite recipe
 //first they click on the save button. If they are not logged in, ask them to log in. If they are logged in 1. pull user_id from the req.session; 2. figure out what they clicked on (from the req.body). Then we need to query our favorites table to see if that recipe already exists in it (use the recipe id to check this); If it does exit, go to next step; if it doesn't exist, add it to the favorites table. Next step is to get user by id (from the req.session), and do an update in order to add the favorite to the through-table that it has created on its own (userfavorite?)
 router.put("/addFavorite", async (req, res) => {
@@ -130,6 +111,43 @@ router.put("/addFavorite", async (req, res) => {
   }
 });
 
+//create new user
+router.post("/", async (req, res) => {
+  try {
+    const dbUserData = await User.create({
+      user_name: req.body.user_name,
+      user_password: req.body.user_password,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post("/favorites", async (req, res) => {
+  // Results of user search.
+  //now our data will be on req.body
+  const spoonData = req.body.title; // we want just the title from the data that was returned using the api call
+  console.log(spoonData);
+  try {
+    res.render("userpage", {
+      spoonData,
+      userID: req.session.user?.id || 0,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/:id");
 //ICEBOX - user wants to delete a recipe - first we pull up the data by the user id (get the userObj) that shows all of the user's favorites; get the user obj and run a remove method (line 103/106)
 
 module.exports = router;
