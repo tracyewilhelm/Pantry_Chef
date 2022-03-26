@@ -84,8 +84,8 @@ router.post("/logout", (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const dbUserData = await User.create({
-      username: req.body.username,
-      password: req.body.password,
+      user_name: req.body.username,
+      user_password: req.body.password,
     });
 
     req.session.save(() => {
