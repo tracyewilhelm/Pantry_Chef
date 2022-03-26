@@ -1,6 +1,7 @@
 //define a variable that touches the ingredient form in the html
 const ingredientEl = document.querySelector("#ingredient-form");
 const searchResultsEl = document.querySelector("#searchResults");
+
 console.log(ingredientEl);
 
 //when we use this, or require dotenv it gets angry, so currently we have hard-coded our api key
@@ -43,7 +44,7 @@ const ingFormHandler = async function (event) {
   //we want to hide the ingredient lists
   ingredientEl.setAttribute("hidden", true);
 
-  //we want to take the name of the recipe and append it to the dom
+  //we want to take the name of each of the recipes and append it to the dom
   let recipeTitle = [];
   summary.forEach(function (obj) {
     recipeTitle.push(obj.title);
@@ -55,7 +56,7 @@ const ingFormHandler = async function (event) {
 
   console.log(recipeTitle);
   console.log(recipeID);
-
+  //create a ul tag and append to it a li which has a a tag appeneded to it
   const ulTag = document.createElement("ul");
   console.log(ulTag + "hello");
   searchResultsEl.appendChild(ulTag);
@@ -63,17 +64,57 @@ const ingFormHandler = async function (event) {
     console.log("I got the element");
     let recipeItem = recipeTitle[i];
     const liTag = document.createElement("li");
-    liTag.appendChild(document.createTextNode(recipeItem));
-
-    liTag.setAttribute(
-      "href",
-      `api.spoonacular.com/recipes/${recipeID[i]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
-    );
+    const aTag = document.createElement("a");
+    aTag.appendChild(document.createTextNode(recipeItem));
+    aTag.classList.add("recipeLink");
+    // aTag.setAttribute(
+    //   "href",
+    //   `https://api.spoonacular.com/recipes/${recipeID[i]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
+    // );
+    liTag.appendChild(aTag);
     ulTag.appendChild(liTag);
   }
+  const recipeLinksEl = document.querySelectorAll(".recipeLink");
+  for (let i = 0; i < recipeLinksEl.length; i++) {
+    recipeLinksEl[i].addEventListener("click", () => {
+      let index = i;
+      renderRecipeCard(recipeID, index);
+    });
+  }
 };
-//this is a new comment
-//api.spoonacular.com/recipes/${ID}/information?apiKey=${apiKey}
+
+const recipeCardEl = document.querySelector("#recipeCard");
+const recipeTitleEl = document.querySelector("#recipeTitle");
+const ingredientListEl = document.querySelector("#ingredientList");
+const directionsEl = document.querySelector("#directions");
+
+const renderRecipeCard = async (recipeID, index) => {
+  console.log(index);
+  const recipeCardData = await fetch(
+    `https://api.spoonacular.com/recipes/${recipeID[index]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
+  );
+  console.log("below fetch");
+  const recipeCard = await recipeCardData.json();
+
+  const recpImg = document.createElement("img");
+  recpImg.setAttribute("src", `${recipeCard.image}`);
+  recipeCardEl.prepend(recpImg);
+  console.log(recipeCard.image);
+  recipeTitleEl.textContent = recipeCard.title;
+  for (let i = 0; i < recipeCard.extendedIngredients.length; i++) {
+    let ingredientItem = recipeCard.extendedIngredients[i].original;
+
+    const liTag = document.createElement("li");
+    liTag.textContent = ingredientItem;
+    ingredientListEl.appendChild(liTag);
+  }
+  const directions = recipeCard.instructions;
+  const pTag = document.createElement("p");
+  pTag.textContent = directions;
+  directionsEl.append(pTag);
+};
+
+ingredientEl.addEventListener("submit", ingFormHandler);
 
 // now make your call to the back end with your data - we know this works, but at this time there isn't a point to this post route
 // const results = await fetch(`/api/results`, {
@@ -92,7 +133,6 @@ const ingFormHandler = async function (event) {
 //because we're not using the post route, we're going to hide the ingredient cards, and display the recipe title results we got from the api
 
 //when the user clicks the button, the checked values are turned into a sting, have a ",+" added to the back end, and that string is added where it says apiString. It then sends the api request out
-https: ingredientEl.addEventListener("submit", ingFormHandler);
 
 // recipes.forEach((recipes.title) => console.log(recipes.title));
 // console.log(titleAndID);
