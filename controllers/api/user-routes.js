@@ -1,5 +1,4 @@
 //GET the log-in page
-
 const router = require("express").Router();
 const { User, Favorites } = require("../../models");
 
@@ -10,7 +9,7 @@ router.get("/", async (req, res) => {
   res.status(200).json(userData);
 });
 
-//get user by id
+//get user by id. After a user has logged in, they can click "recipes" button and see a list of their favorited recipes
 router.get("/:id", async (req, res) => {
   if (req.session.loggedIn) {
     try {
@@ -131,6 +130,6 @@ router.put("/addFavorite", async (req, res) => {
   }
 });
 
-//user wants to delete a recipe - first we pull up the data by the user id (get the userObj) that shows all of the user's favorites; get the user obj and run a remove method (line 103/106)
+//ICEBOX - user wants to delete a recipe - first we pull up the data by the user id (get the userObj) that shows all of the user's favorites; get the user obj and run a remove method (line 103/106)
 
 module.exports = router;
