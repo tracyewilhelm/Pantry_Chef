@@ -1,6 +1,10 @@
 //define a variable that touches the ingredient form in the html
 const ingredientEl = document.querySelector("#ingredient-form");
 const searchResultsEl = document.querySelector("#searchResults");
+const recipeCardEl = document.querySelector("#recipeCard");
+const recipeTitleEl = document.querySelector("#recipeTitle");
+const ingredientListEl = document.querySelector("#ingredientList");
+const directionsEl = document.querySelector("#directions");
 
 console.log(ingredientEl);
 
@@ -16,7 +20,7 @@ const ingFormHandler = async function (event) {
   const apiKey = $(this).data("api");
   let checkedEl = $("input:checked");
   let selected = [];
-
+  //take all of the things they checked and push it into the empty array called selected
   $.each(checkedEl, function () {
     selected.push($(this).val());
   });
@@ -44,28 +48,34 @@ const ingFormHandler = async function (event) {
   //we want to hide the ingredient lists
   ingredientEl.setAttribute("hidden", true);
 
-  //we want to take the name of each of the recipes and append it to the dom
+  //we want to take the name of each of the recipes and add it to an empty array called recipeTitle
   let recipeTitle = [];
   summary.forEach(function (obj) {
     recipeTitle.push(obj.title);
   });
+  //we want to take the id of each of the recipes and add it to an empty array called recipeID
   let recipeID = [];
   summary.forEach(function (obj) {
     recipeID.push(obj.id);
   });
 
+  //what does reciptTitle and recipeID look like?
   console.log(recipeTitle);
   console.log(recipeID);
+
+  // we want to create an ul in the recipe section so that we can see all of the names of the recipes that was returned to us
   //create a ul tag and append to it a li which has a a tag appeneded to it
   const ulTag = document.createElement("ul");
   console.log(ulTag + "hello");
   searchResultsEl.appendChild(ulTag);
+  //give us the value of each index in the recipeTitle array, and make it clickable
   for (let i = 0; i < recipeTitle.length; i++) {
     console.log("I got the element");
     let recipeItem = recipeTitle[i];
     const liTag = document.createElement("li");
     const aTag = document.createElement("a");
     aTag.appendChild(document.createTextNode(recipeItem));
+    //give every recipe title a class of recipeLink, so we can add an event listener to everything with the class of "recipeLink"
     aTag.classList.add("recipeLink");
     // aTag.setAttribute(
     //   "href",
@@ -74,6 +84,7 @@ const ingFormHandler = async function (event) {
     liTag.appendChild(aTag);
     ulTag.appendChild(liTag);
   }
+  //make everything with the class of recipeLink listen for a "click"
   const recipeLinksEl = document.querySelectorAll(".recipeLink");
   for (let i = 0; i < recipeLinksEl.length; i++) {
     recipeLinksEl[i].addEventListener("click", () => {
@@ -83,31 +94,32 @@ const ingFormHandler = async function (event) {
   }
 };
 
-const recipeCardEl = document.querySelector("#recipeCard");
-const recipeTitleEl = document.querySelector("#recipeTitle");
-const ingredientListEl = document.querySelector("#ingredientList");
-const directionsEl = document.querySelector("#directions");
-
+//now we are going to make the recipe card - we will do this by making a second api call using the recipe id, and bringing back the ingredients, image, and instructions
 const renderRecipeCard = async (recipeID, index) => {
   console.log(index);
   const recipeCardData = await fetch(
     `https://api.spoonacular.com/recipes/${recipeID[index]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
   );
   console.log("below fetch");
+  //put all of the information from the fetch into readible form
   const recipeCard = await recipeCardData.json();
 
+  //make a const for the image that we got back from the api
   const recpImg = document.createElement("img");
   recpImg.setAttribute("src", `${recipeCard.image}`);
   recipeCardEl.prepend(recpImg);
   console.log(recipeCard.image);
+
+  //get the title name from the data object and add it to the dom using query selecto recipeTitleEl
   recipeTitleEl.textContent = recipeCard.title;
+  //take the array of ingredients and pull out the values of "original" and put them in the ingredientItem variable
   for (let i = 0; i < recipeCard.extendedIngredients.length; i++) {
     let ingredientItem = recipeCard.extendedIngredients[i].original;
-
+    //make a list of those ingredient items
     const liTag = document.createElement("li");
     liTag.textContent = ingredientItem;
     ingredientListEl.appendChild(liTag);
-  }
+  } //pull out the instructions from the object and append it to the dom using the created "p-tag"
   const directions = recipeCard.instructions;
   const pTag = document.createElement("p");
   pTag.textContent = directions;
