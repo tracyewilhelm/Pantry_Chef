@@ -2,6 +2,25 @@
 const router = require("express").Router();
 const { User, Favorites } = require("../../models");
 
+//create new user
+router.post("/", async (req, res) => {
+  try {
+    const dbUserData = await User.create({
+      user_name: req.body.user_name,
+      user_password: req.body.user_password,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 //get all users - comment this out
 router.get("/", async (req, res) => {
   console.log("hello?");
@@ -77,25 +96,6 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
-  }
-});
-
-//create new user
-router.post("/", async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      user_name: req.body.username,
-      user_password: req.body.password,
-    });
-
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res.status(200).json(dbUserData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
   }
 });
 
