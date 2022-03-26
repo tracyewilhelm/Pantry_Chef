@@ -45,9 +45,8 @@
     </div>
 
 <!-- Ingredients -->
-<div class="ingredients-container container-fluid row p-4">
-    
-    <form id="ingredient-form" data-api={{API_KEY}}>
+<div class="ingredients-container container-fluid row p-4" id="ingredient-form" data-api={{API_KEY}}>
+    <form>
         <div class="col-sm-auto col-md-3 mb-3">
             <div class="card shadow rounded">
                 <div class="card-header p-3">
@@ -673,27 +672,16 @@
         <button class="btn btn-secondary btn-lg mt-3" role="button">Find Recipes</button>
     </form>
 </div>
+
 <!-- Results / My Recipes List -->
 {{!-- the list of the returned recipes that matches the ingredients --}}
     <div class="recipelist-container container-fluid row p-4">
         <h1 class="section-title">Results:</h1>
-        <div class="list-group" id="searchResults">
-        {{!-- <a href="{{spoonData}}" class="list-group-item list-group-item-action">
-            Please be spoonData
-        </a> --}}
-        {{!-- <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-        <a href="#" class="list-group-item list-group-item-action">
-            Cras justo odio
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a> --}}
+        <div class="list-group" >
+            <div id="searchResults">
+            </div>
+        </div>
     </div>
-</div>
 
 <!-- Recipes -->
 <div class="recipes-container p-4">
