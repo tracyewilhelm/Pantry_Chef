@@ -45,8 +45,9 @@
     </script>
 
 <div class="ingredients-container container-fluid row p-4">
-    <h1 class="section-title">Ingredients:</h1>
+    
     <form id="ingredient-form" data-api={{API_KEY}}>
+    <h1 class="section-title">Ingredients:</h1>
     <div class="col-sm-3 mb-3">
         <div class="card shadow rounded" style="width:250px;">
             <div class="card-header p-3">
@@ -675,3 +676,55 @@
     </form>
 </div>
 
+<div class="recipes-container container-fluid row p-4" >
+    Recipes:
+    <div class="list-group" id="searchResults">
+        <a href="{{spoonData}}" class="list-group-item list-group-item-action">
+            Please be spoonData
+        </a>
+        {{!-- <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+        <a href="#" class="list-group-item list-group-item-action">
+            Cras justo odio
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a> --}}
+    </div>
+</div>
+
+
+<div class="recipes-container container-fluid row p-4">
+    <h1 class="section-title">Recipes:</h1>
+    <div class="col-sm-6 mb-3">
+        <div class="card shadow rounded" style="width: 38rem;">
+            <img class="card-img-top" src="public/images/beef_enchiladas.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #ff9000">Beef Enchilada Casserole</h5>
+                <p class="card-text" style="color: #ffcf91">60 minutes</p>
+            </div>
+            <ul id="ingredientList" class="list-group list-group-flush">
+                {{!-- <li class="list-group-item">8 flour tortillas</li>
+                <li class="list-group-item">1 lb ground beef</li>
+                <li class="list-group-item">1 can mild enchilada sauce</li>
+                <li class="list-group-item">1 can black bean and corn salsa</li>
+                <li class="list-group-item">2 cups shredded cheddar cheese</li> --}}
+            </ul>
+            <div class="card-body">
+                <p id="directions">Directions</p>
+                {{!-- <p>2. Fold tortillas in half and place folded side down in dish and set aside.</p>
+                <p>3. cook ground beef over medium high heat until no longer pink. add 1/4 cup enchilada sauce, bean and corn salsa, and 1 cup of shredded cheese. Stir to combine.</p>
+                <p>4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam is facing down.</p>
+                <p>5. Top with remaining enchilada sauce and cheese. Cover with foil and bake 40-45 minutes.</p> --}}
+                {{#if loggedIn }}
+                <a href="/api/users/{{userID}}" class="btn btn-primary btn-sm" role="button">My Recipes</a>
+                {{else }}
+                <button  class="btn btn-primary btn-sm" disabled >Please log in to view recipes</button>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
