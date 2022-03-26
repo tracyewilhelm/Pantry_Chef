@@ -42,14 +42,6 @@ const ingFormHandler = async function (event) {
     }),
     headers: { "Content-Type": "application/json" },
   });
-<<<<<<< HEAD
-  const recipeData = await results.json()
-   console.log(recipeData)
-
-   // recipeData is an array of 10 objects
-   
-//    location.replace("/api/results");
-=======
 
   const recipeData = await results.json();
   console.log(recipeData);
@@ -57,7 +49,6 @@ const ingFormHandler = async function (event) {
   //recipeData is an array of 10 objects
 
   //    location.replace("/api/results");
->>>>>>> main
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);
