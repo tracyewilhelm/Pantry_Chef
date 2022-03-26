@@ -45,8 +45,11 @@
     </div>
 
 <!-- Ingredients -->
-<div class="ingredients-container container-fluid row p-4" id="ingredient-form" data-api={{API_KEY}}>
-    <form>
+    <div class="ingredients-container container-fluid row p-4" id="ingredient-form" data-api={{API_KEY}}>
+        <h1 class="section-title">Ingredients:</h1>
+        <form id="ingredient-form">
+            <div class="row d-flex flex-wrap">
+    
         <div class="col-sm-auto col-md-3 mb-3">
             <div class="card shadow rounded">
                 <div class="card-header p-3">
@@ -669,6 +672,7 @@
             </div>
         </div>
         <button class="btn btn-secondary btn-lg mt-3" role="button">Find Recipes</button>
+    </div>
     </form>
 </div>
 
@@ -689,8 +693,8 @@
             <div class="card shadow rounded" style="min-width: 250px;" id="recipeCard">
                 {{!-- <img class="card-img-top" src="images/beef_enchiladas.jpg" alt="Card image cap"> --}}
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #ff9000" id="recipeTitle">Beef Enchilada Casserole</h5>
-                    <p class="card-text" style="color: #ffcf91">60 minutes</p>
+                    <h5 class="card-title" style="color: #ff9000" id="recipeTitle">Click on name to see recipe</h5>
+                    <p class="card-text" style="color: #ffcf91"></p>
                 </div>
                 <ul id="ingredientList" class="list-group list-group-flush">
                     {{!-- <li class="list-group-item">8 flour tortillas</li>
