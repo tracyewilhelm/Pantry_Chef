@@ -17,7 +17,7 @@ router.get("/:id", async (req, res) => {
         include: [Favorites],
       });
       const recpList = userDB.get({ plain: true });
-      res.render("favorites", {
+      res.render("userpage", {
         recpList,
       });
     } catch (err) {
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   } else {
-    res.render("homepage", { message: "Please log in" });
+    res.render("homepage", { message: "Please log in or sign up" });
   }
 });
 
