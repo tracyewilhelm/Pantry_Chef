@@ -1,6 +1,9 @@
 //define a variable that touches the ingredient form in the html
 const ingredientEl = document.querySelector("#ingredient-form");
+const searchResultsEl = document.querySelector("#searchResults");
 console.log(ingredientEl);
+
+//when we use this, or require dotenv it gets angry, so currently we have hard-coded our api key
 // import dotenv from "dotenv";
 // dotenv.config();
 
@@ -32,28 +35,64 @@ const ingFormHandler = async function (event) {
   console.log("recipes line 29");
   console.log(recipes);
   //can we get just the title of index 1?
-  console.log(recipes[1].title);
+  // console.log(recipes[1].title);
 
   //take the object we get back and give us just the title and id. Make a new array containing an object for each of the 10 returned recipes with the key/value pairs of title and id
   const summary = recipes.map(({ title, id }) => ({ title, id }));
   console.log(summary);
+  //we want to hide the ingredient lists
+  ingredientEl.setAttribute("hidden", true);
 
-  // now make your call to the back end with your data
-  const results = await fetch(`/api/results`, {
-    method: "POST",
-    body: JSON.stringify({
-      recipes,
-    }),
-    headers: { "Content-Type": "application/json" },
+  //we want to take the name of the recipe and append it to the dom
+  let recipeTitle = [];
+  summary.forEach(function (obj) {
+    recipeTitle.push(obj.title);
+  });
+  let recipeID = [];
+  summary.forEach(function (obj) {
+    recipeID.push(obj.id);
   });
 
-  const recipeData = await results.json();
-  console.log(recipeData);
-  location.replace("/api/results");
+  console.log(recipeTitle);
+  console.log(recipeID);
+
+  const ulTag = document.createElement("ul");
+  console.log(ulTag + "hello");
+  searchResultsEl.appendChild(ulTag);
+  for (let i = 0; i < recipeTitle.length; i++) {
+    console.log("I got the element");
+    let recipeItem = recipeTitle[i];
+    const liTag = document.createElement("li");
+    liTag.appendChild(document.createTextNode(recipeItem));
+
+    liTag.setAttribute(
+      "href",
+      `api.spoonacular.com/recipes/${recipeID[i]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
+    );
+    ulTag.appendChild(liTag);
+  }
 };
+//this is a new comment
+//api.spoonacular.com/recipes/${ID}/information?apiKey=${apiKey}
+
+// now make your call to the back end with your data - we know this works, but at this time there isn't a point to this post route
+// const results = await fetch(`/api/results`, {
+//   method: "POST",
+//   body: JSON.stringify({
+//     recipes,
+//   }),
+//   headers: { "Content-Type": "application/json" },
+// });
+
+// // const recipeData = await results.json();
+// console.log(results);
+// if (response.ok) {
+//   location.replace("/api/results");
+// }
+//because we're not using the post route, we're going to hide the ingredient cards, and display the recipe title results we got from the api
 
 //when the user clicks the button, the checked values are turned into a sting, have a ",+" added to the back end, and that string is added where it says apiString. It then sends the api request out
-ingredientEl.addEventListener("submit", ingFormHandler);
+https: ingredientEl.addEventListener("submit", ingFormHandler);
 
 // recipes.forEach((recipes.title) => console.log(recipes.title));
 // console.log(titleAndID);
