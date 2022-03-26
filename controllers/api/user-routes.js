@@ -2,25 +2,6 @@
 const router = require("express").Router();
 const { User, Favorites } = require("../../models");
 
-//create new user
-router.post("/", async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      user_name: req.body.user_name,
-      user_password: req.body.user_password,
-    });
-
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res.status(200).json(dbUserData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
 //get all users - comment this out
 router.get("/", async (req, res) => {
   console.log("hello?");
@@ -130,6 +111,43 @@ router.put("/addFavorite", async (req, res) => {
   }
 });
 
+//create new user
+router.post("/", async (req, res) => {
+  try {
+    const dbUserData = await User.create({
+      user_name: req.body.user_name,
+      user_password: req.body.user_password,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post("/favorites", async (req, res) => {
+  // Results of user search.
+  //now our data will be on req.body
+  const spoonData = req.body.title; // we want just the title from the data that was returned using the api call
+  console.log(spoonData);
+  try {
+    res.render("userpage", {
+      spoonData,
+      userID: req.session.user?.id || 0,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/:id");
 //ICEBOX - user wants to delete a recipe - first we pull up the data by the user id (get the userObj) that shows all of the user's favorites; get the user obj and run a remove method (line 103/106)
 
 module.exports = router;
