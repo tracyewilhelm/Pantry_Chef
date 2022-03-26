@@ -18,7 +18,7 @@ const userData = [
 const seedUser = async () => {
   const newUsers = await User.bulkCreate(userData);
   console.log({ newUsers });
-  newUsers[0].addFavorites(33);
+  newUsers[0].addFavorite(33);
   return newUsers;
 };
 
