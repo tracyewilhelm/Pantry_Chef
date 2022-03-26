@@ -1,6 +1,9 @@
 //define a variable that touches the ingredient form in the html
 const ingredientEl = document.querySelector("#ingredient-form");
 console.log(ingredientEl);
+// import dotenv from "dotenv";
+// dotenv.config();
+
 //in this file you make the api all to spoonacula, once you have that data from your user input you then make your fetch post to you controller route. Once you have that string you then send your data to your new fetch for the actual recipe and instructions
 
 const ingFormHandler = async function (event) {
@@ -21,7 +24,7 @@ const ingFormHandler = async function (event) {
   const spoonData = await fetch(
     // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+sugar,+cinnamon&ranking=1`
 
-    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${apiString}&ranking=1&includeInstructions=true`
+    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=15ed70dde7cc4c0fb86eff7fae59f587&ingredients=${apiString}&ranking=1&includeInstructions=true`
   );
 
   //take the data we get back from our api fetch and make it the value of "recipes"
@@ -35,20 +38,18 @@ const ingFormHandler = async function (event) {
   const summary = recipes.map(({ title, id }) => ({ title, id }));
   console.log(summary);
 
-  //now make your call to the back end with your data
+  // now make your call to the back end with your data
   const results = await fetch(`/api/results`, {
     method: "POST",
     body: JSON.stringify({
-      spoonData,
+      recipes,
     }),
     headers: { "Content-Type": "application/json" },
   });
 
   const recipeData = await results.json();
   console.log(recipeData);
-
-  //recipeData is an array of 10 objects
-  //    location.replace("/api/results");
+  location.replace("/api/results");
 };
 
 //when the user clicks the button, the checked values are turned into a sting, have a ",+" added to the back end, and that string is added where it says apiString. It then sends the api request out

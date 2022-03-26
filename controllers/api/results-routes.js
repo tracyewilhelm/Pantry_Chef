@@ -3,7 +3,7 @@ const axios = require("axios");
 const router = require("express").Router();
 // const spoonData = require("../../public/js/index.js");
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   // Results of user search.
   //now our data will be on req.body
   const spoonData = req.body.title; // we want just the title from the data that was returned using the api call
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id")
+router.get("/:id");
 
 module.exports = router;
 
