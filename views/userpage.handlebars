@@ -1,49 +1,35 @@
 <!-- Results / My Recipes List -->
+{{!-- the list of the returned recipes that matches the ingredients --}}
     <div class="recipelist-container container-fluid row p-4">
-        <h1 class="section-title">Results:</h1>
-        <div class="list-group">
-        <a href="{{spoonData}}" class="list-group-item list-group-item-action">
-            Please be spoonData
-        </a>
-        {{!-- <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-        <a href="#" class="list-group-item list-group-item-action">
-            Cras justo odio
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a> --}}
+        <h1 class="section-title">Favorites:</h1>
+        <ul class="list-group" id="favorites">
+            {{Favorite}}
+        </ul>
     </div>
-</div>
 
 <!-- Recipes -->
 <div class="recipes-container p-4">
     <h1 class="section-title">Recipes:</h1>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" >
         <div class="col-md-6 mb-3">
-            <div class="card shadow rounded" style="min-width: 250px;">
-                <img class="card-img-top" src="images/beef_enchiladas.jpg" alt="Card image cap">
+            <div class="card shadow rounded" style="min-width: 250px;" id="recipeCard">
+                
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #ff9000">Beef Enchilada Casserole</h5>
-                    <p class="card-text" style="color: #ffcf91">60 minutes</p>
+                    <h5 class="card-title" style="color: #ff9000" id="recipeTitle">Click on name to see recipe</h5>
+                    <p class="card-text" style="color: #ffcf91"></p>
                 </div>
                 <ul id="ingredientList" class="list-group list-group-flush">
-                    {{!-- <li class="list-group-item">8 flour tortillas</li>
-                    <li class="list-group-item">1 lb ground beef</li>
-                    <li class="list-group-item">1 can mild enchilada sauce</li>
-                    <li class="list-group-item">1 can black bean and corn salsa</li>
-                    <li class="list-group-item">2 cups shredded cheddar cheese</li> --}}
+                    
                 </ul>
-                <div class="card-body">
-                    <p id="directions">Directions</p>
-                    {{!-- <p>2. Fold tortillas in half and place folded side down in dish and set aside.</p>
-                    <p>3. cook ground beef over medium high heat until no longer pink. add 1/4 cup enchilada sauce, bean and corn salsa, and 1 cup of shredded cheese. Stir to combine.</p>
-                    <p>4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam is facing down.</p>
-                    <p>5. Top with remaining enchilada sauce and cheese. Cover with foil and bake 40-45 minutes.</p> --}}
+                <div class="card-body" id="directions">
+                    <p >Directions</p>
+                    
                 </div>
+                <div>{{#if loggedIn }}
+                    <a href="/api/users/{{userID}}" class="btn btn-primary btn-sm" role="button">My Recipes</a>
+                    {{else }}
+                    <button  class="btn btn-primary btn-sm" disabled >Please log in to view recipes</button>
+                    {{/if}}</div>
             </div>
         </div>   
     </div>
