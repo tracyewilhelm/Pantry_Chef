@@ -5,7 +5,7 @@ const recipeCardEl = document.querySelector("#recipeCard");
 const recipeTitleEl = document.querySelector("#recipeTitle");
 const ingredientListEl = document.querySelector("#ingredientList");
 const directionsEl = document.querySelector("#directions");
-
+const saveBtnEl = document.querySelector("#recipeSaveBtn");
 // console.log(ingredientEl);
 
 //when we use this, or require dotenv it gets angry, so currently we have hard-coded our api key
@@ -127,10 +127,25 @@ const renderRecipeCard = async (recipeID, index) => {
 
   pTag.textContent = directions;
   directionsEl.append(pTag);
+  //give the save button the name attribute with the value of the recipe number
+  saveBtnEl.setAttribute("name", `${recipeID[index]}`);
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);
 
+//when the user clicks the MyRecipes button, it will redirect them to their user page, which which will render a list of their favorited recipe names. When they click on the recipe names, the recipe will show up.
+
+//find the id associated with the save button
+const saveRecipe = function (event) {
+  event.preventDefault();
+  console.log(saveBtnEl.getAttribute("name"));
+};
+//make a put request to /addFaforite
+
+//make an event listener that listens for a click on the save button and runs the put function
+saveBtnEl.addEventListener("click", saveRecipe);
+
+//==========================================
 // now make your call to the back end with your data - we know this works, but at this time there isn't a point to this post route
 // const results = await fetch(`/api/results`, {
 //   method: "POST",
