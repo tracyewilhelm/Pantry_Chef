@@ -118,7 +118,7 @@ const renderRecipeCard = async (recipeID, index) => {
     //make a list of those ingredient items
     const liTag = document.createElement("li");
     liTag.textContent = ingredientItem;
-    ingredientListEl.appendChild(liTag);
+    ingredientListEl.append(liTag);
   } //pull out the instructions from the object and append it to the dom using the created "p-tag"
   const directions = recipeCard.instructions;
   const pTag = document.createElement("p");
