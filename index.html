@@ -39,17 +39,23 @@
                 <!-- Nav Links -->
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ingredients</a>
+                        <a class="nav-link" href="index.html">Ingredients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">My Recipes</a>
                     </li>
-                    <!-- Modal -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign Up / Log In</a>
+                    </li>
+                    <!-- Modal
                     <li class="nav-item">
                         <span class="nav-link" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</span>
-                    </li>
+                    </li> -->
                 </ul>
-                <!-- Login Form -->
+                <!-- Login Form
                 <form class="d-flex row login-form ml-2">
                     <div class="col">
                         <input class="form-control mr-sm-1 username" type="username" placeholder="Username"
@@ -62,14 +68,14 @@
                     <div class="col">
                         <button class="btn btn-outline-light btn-sm my-1 my-sm-1" type="submit">Log In</button>
                     </div>
-                </form>
+                </form> -->
             </div>
         </nav>
     </div>
 </header>
 
 <body>
-    <!-- Sign Up Modal -->
+    <!-- Sign Up Modal
     <div class="modal fade" id="signUpModal">
         <div class="modal-dialog">
             <div class="modal-content animate signup-form">
@@ -103,7 +109,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Homepage -->
     <div class="jumbotron jumbotron-fluid p-4">
@@ -114,6 +120,55 @@
             </p>
         </div>
     </div>
+
+    <!-- User SignUp/LogIn -->
+    <div class="login-container container-fluid row p-4 justify-content-center">
+        <div class="signupCard rounded col-md-3">
+            <h1 class="section-title"><span style="color:#C7C3BF;">Sign Up:</span></h1>
+            <div class="signup-form">
+                <form>
+                    <div class="container">
+                        <div class="mt-2">
+                            <label><b>Username</b></label>
+                            <input type="text" placeholder="Username" name="username" required id="username-signup">
+                        </div>
+                        <div class="mt-2">
+                            <label><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" id="password-signup" required>
+                        </div>
+                        <div class="mt-2">
+                            <label><b>Repeat Password</b></label>
+                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                        </div>
+                        <div class="mt-2">
+                            <div>
+                                <button class="btn btn-primary mb-3" type="submit" >Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="loginCard rounded col-md-3">
+            <h1 class="section-title">Log In:</h1>
+            <div class="list-group">
+                <form class="login-form ml-2">
+                    <div class="mt-2">
+                        <input class="form-control mr-sm-1 username" type="username" placeholder="Username"
+                            aria-label="Username" id="username-login" required>
+                    </div>
+                    <div class="mt-2">
+                        <input class="form-control mr-sm-1 password" type="password" placeholder="Password"
+                            aria-label="Password" id="password-login" required>
+                    </div>
+                    <div class="mt-2">
+                        <button class="btn btn-primary" type="submit">Log In</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+    </div>
+
 
     <!-- Ingredients -->
     <div class="ingredients-container container-fluid row p-4" id="ingredient-form" data-api={{API_KEY}}>

@@ -62,15 +62,12 @@ body {
     color: var(--primary);
     background-color: white;
 }
-.navbar-toggler-icon {
-    background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
-}
 
-/* Sign Up Modal */
+/* Sign Up Modal
 .modal {
     width: 22rem;
     height: auto;
-} 
+}  */
 
 /* Jumbotron */
 .jumbotron {
@@ -85,6 +82,18 @@ body {
     background-repeat: no-repeat;
     object-fit: cover;
     margin-bottom: 10px;
+}
+
+/* SignUp/LogIn */
+.login-container {
+    background-color: var(--neutral);
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 10px;
+}
+.signupCard {
+    background-color: white;
 }
 
 /* Ingredient Cards */
