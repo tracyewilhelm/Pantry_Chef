@@ -1,10 +1,13 @@
 <!-- Results / My Recipes List -->
-{{!-- the list of the returned recipes that matches the ingredients --}}
+{{!-- this should list out all of the recipe id's that the user has saved --}}
     <div class="recipelist-container container-fluid row p-4">
         <h1 class="section-title">Favorites:</h1>
+        <div class="favorite">
+            {{#each favorite as |favorite|}}
         <ul class="list-group" id="favorites">
-            {{Favorite}}
+            <li>{{favoriteId}}</li>
         </ul>
+        </div>
     </div>
 
 <!-- Recipes -->
