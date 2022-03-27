@@ -77,10 +77,7 @@ const ingFormHandler = async function (event) {
     aTag.appendChild(document.createTextNode(recipeItem));
     //give every recipe title a class of recipeLink, so we can add an event listener to everything with the class of "recipeLink"
     aTag.classList.add("recipeLink");
-    // aTag.setAttribute(
-    //   "href",
-    //   `https://api.spoonacular.com/recipes/${recipeID[i]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
-    // );
+    aTag.setAttribute("style", "color:white; text-decoration:none;");
     liTag.appendChild(aTag);
     ulTag.appendChild(liTag);
   }
@@ -118,7 +115,7 @@ const renderRecipeCard = async (recipeID, index) => {
     //make a list of those ingredient items
     const liTag = document.createElement("li");
     liTag.textContent = ingredientItem;
-    ingredientListEl.appendChild(liTag);
+    ingredientListEl.append(liTag);
   } //pull out the instructions from the object and append it to the dom using the created "p-tag"
   const directions = recipeCard.instructions;
   const pTag = document.createElement("p");
