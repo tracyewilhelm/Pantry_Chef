@@ -9,6 +9,7 @@ router.get("/", async (req, res) => {
   res.status(200).json(userData);
 });
 
+/*
 //get user by id. After a user has logged in, they can click "recipes" button and see a list of their favorited recipes
 router.get("/:id", async (req, res) => {
   if (req.session.loggedIn) {
@@ -27,7 +28,7 @@ router.get("/:id", async (req, res) => {
   } else {
     res.render("homepage", { message: "Please log in or sign up" });
   }
-});
+});*/
 
 //login
 router.post("/login", async (req, res) => {
@@ -146,9 +147,23 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/favorite", async (req, res) => {
-  // Results of user search.
-  //now our data will be on req.body
+router.get("/favorite", async (req, res) => {
+  try {
+    console.log("return favorites for user");
+    let theFavorites = await User.findAll({
+      where: {
+        id: req.session.user?.id || 0,
+      },
+      include: [{ model: Favorite, required: false }],
+    });
+    res.status(200).json(theFavorites);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+/*
   const spoonData = req.body.title; // we want just the title from the data that was returned using the api call
   console.log(spoonData);
   try {
@@ -159,11 +174,12 @@ router.post("/favorite", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
-  }
-});
+    res.status(500).json(err); 
+  }*/
 
-router.get("/:id");
+//return an error or something if there's no logged in user
+//make sure the front end checks for the state where there are no recipes
+
 //ICEBOX - user wants to delete a recipe - first we pull up the data by the user id (get the userObj) that shows all of the user's favorite recipes; get the user obj and run a remove method (line 103/106)
 
 module.exports = router;
