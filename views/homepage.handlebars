@@ -44,6 +44,54 @@
         </div>
     </div>
 
+<!-- User SignUp/LogIn -->
+    <div class="login-container container-fluid row p-4 justify-content-center">
+        <div class="signupCard rounded col-md-3">
+            <h1 class="section-title"><span style="color:#C7C3BF;">Sign Up:</span></h1>
+            <div class="signup-form">
+                <form>
+                    <div class="container">
+                        <div class="mt-2">
+                            <label><b>Username</b></label>
+                            <input type="text" placeholder="Username" name="username" required id="username-signup">
+                        </div>
+                        <div class="mt-2">
+                            <label><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" id="password-signup" required>
+                        </div>
+                        <div class="mt-2">
+                            <label><b>Repeat Password</b></label>
+                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                        </div>
+                        <div class="mt-2">
+                            <div>
+                                <button class="btn btn-primary mb-3" type="submit" >Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="loginCard rounded col-md-3">
+            <h1 class="section-title">Log In:</h1>
+            <div class="list-group">
+                <form class="login-form ml-2">
+                    <div class="mt-2">
+                        <input class="form-control mr-sm-1 username" type="username" placeholder="Username"
+                            aria-label="Username" id="username-login" required>
+                    </div>
+                    <div class="mt-2">
+                        <input class="form-control mr-sm-1 password" type="password" placeholder="Password"
+                            aria-label="Password" id="password-login" required>
+                    </div>
+                    <div class="mt-2">
+                        <button class="btn btn-primary" type="submit">Log In</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+    </div>
+
 <!-- Ingredients -->
     <div class="ingredients-container container-fluid row p-4" id="ingredient-form" data-api={{API_KEY}}>
         <h1 class="section-title">Ingredients:</h1>
