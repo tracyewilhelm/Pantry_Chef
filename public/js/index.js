@@ -32,7 +32,7 @@ const ingFormHandler = async function (event) {
   const spoonData = await fetch(
     // `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=apples,+sugar,+cinnamon&ranking=1`
 
-    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=15ed70dde7cc4c0fb86eff7fae59f587&ingredients=${apiString}&ranking=1&includeInstructions=true`
+    `https://api.spoonacular.com/recipes/findByIngredients?apiKey=d7b803c21feb41b7b01d22f464050ff6&ingredients=${apiString}&ranking=1&includeInstructions=true`
   );
 
   //take the data we get back from our api fetch and make it the value of "recipes"
@@ -96,9 +96,9 @@ const renderRecipeCard = async (recipeID, index) => {
   console.log(index);
 
   const recipeCardData = await fetch(
-    `https://api.spoonacular.com/recipes/${recipeID[index]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
+    `https://api.spoonacular.com/recipes/${recipeID[index]}/information?apiKey=d7b803c21feb41b7b01d22f464050ff6`
   );
-  console.log("below fetch");
+  // console.log("below fetch");
   //put all of the information from the fetch into readible form
   const recipeCard = await recipeCardData.json();
 
@@ -136,14 +136,35 @@ ingredientEl.addEventListener("submit", ingFormHandler);
 //when the user clicks the MyRecipes button, it will redirect them to their user page, which which will render a list of their favorited recipe names. When they click on the recipe names, the recipe will show up.
 
 //find the id associated with the save button
-const saveRecipe = function (event) {
+const saveRecipe = async function (event) {
   event.preventDefault();
-  console.log(saveBtnEl.getAttribute("name"));
+  // console.log(saveBtnEl.getAttribute("name"));
+  // const favRecpID = saveBtnEl.getAttribute("name");
+  console.log(saveBtnEl);
+
+  if (saveBtnEl) {
+    console.log("trying to send " + saveBtnEl + " to db");
+    const response = await fetch("/api/users/addFavorite", {
+      method: "PUT",
+      body: JSON.stringify({
+        id: saveBtnEl.getAttribute("name"),
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(saveBtnEl);
+    if (response.ok) {
+      console.log("all is well");
+    } else {
+      alert("Failed to post to db");
+    }
+  }
 };
-//make a put request to /addFaforite
+//make a post request to /addFaforite
 
 //make an event listener that listens for a click on the save button and runs the put function
 saveBtnEl.addEventListener("click", saveRecipe);
+
+//WE NEED A GET REQUEST THAT DISPLAYS ALL OF THE USER'S FAVORITED RECIPE NAMES
 
 //==========================================
 // now make your call to the back end with your data - we know this works, but at this time there isn't a point to this post route
