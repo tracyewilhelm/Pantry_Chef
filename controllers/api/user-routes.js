@@ -116,9 +116,9 @@ router.post("/", async (req, res) => {
   try {
     console.log(
       "we've landed in the user post user: " +
-        req.session.user_name +
+        req.body.user_name +
         " pass: " +
-        req.session.user_password
+        req.body.user_password
     );
 
     const dbUserData = await User.create({
