@@ -88,10 +88,10 @@ router.post("/logout", (req, res) => {
 
 //adding a favorite recipe
 //first they click on the save button. If they are not logged in, ask them to log in. If they are logged in 1. pull user_id from the req.session; 2. figure out what they clicked on (from the req.body). Then we need to query our Favorite table to see if that recipe already exists in it (use the recipe id to check this); If it does exit, go to next step; if it doesn't exist, add it to the Favorite table. Next step is to get user by id (from the req.session), and do an update in order to add the favorite to the through-table that it has created on its own (userfavorite?)
-router.put("/addFavorite", async (req, res) => {
+router.post("/addFavorite", async (req, res) => {
   console.log("this is posting to the favorite db");
   const userId = req.session.user.id; //this gives us the user id from the url that they logged in as
-  const favRecpID = req.body.favRecpID; //make sure this recipeID matches where they've captured in on the front end
+  const favRecpID = req.body.favRecpID; //make sure this recipeID matches where they've captured it on the front end
   //this is searching for our user by their user id
   const userObj = await User.findOne({
     where: {

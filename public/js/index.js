@@ -133,25 +133,23 @@ const renderRecipeCard = async (recipeID, index) => {
 
 ingredientEl.addEventListener("submit", ingFormHandler);
 
-//when the user clicks the MyRecipes button, it will redirect them to their user page, which which will render a list of their favorited recipe names. When they click on the recipe names, the recipe will show up.
-
-//find the id associated with the save button
+//capture the value of the name attribute given to the save button. Take this value and make it equal to a new variable name (favRecpID). Tkae this value and send it to the db when a user
 const saveRecipe = async function (event) {
   event.preventDefault();
-  // console.log(saveBtnEl.getAttribute("name"));
-  // const favRecpID = saveBtnEl.getAttribute("name");
-  console.log(saveBtnEl);
+  console.log(saveBtnEl.getAttribute("name"));
+  const favRecpID = saveBtnEl.getAttribute("name");
+  console.log(favRecpID);
 
   if (saveBtnEl) {
-    console.log("trying to send " + saveBtnEl + " to db");
+    console.log("trying to send " + favRecpID + " to db");
     const response = await fetch("/api/users/addFavorite", {
-      method: "PUT",
+      method: "POST",
       body: JSON.stringify({
-        id: saveBtnEl.getAttribute("name"),
+        favRecpID,
       }),
       headers: { "Content-Type": "application/json" },
     });
-    console.log(saveBtnEl);
+    console.log(favRecpID);
     if (response.ok) {
       console.log("all is well");
     } else {
@@ -159,12 +157,12 @@ const saveRecipe = async function (event) {
     }
   }
 };
-//make a post request to /addFaforite
 
 //make an event listener that listens for a click on the save button and runs the put function
 saveBtnEl.addEventListener("click", saveRecipe);
 
 //WE NEED A GET REQUEST THAT DISPLAYS ALL OF THE USER'S FAVORITED RECIPE NAMES
+//when the user clicks the MyRecipes button, it will redirect them to their user page, which which will render a list of their favorited recipe names. When they click on the recipe names, the recipe will show up.
 
 //==========================================
 // now make your call to the back end with your data - we know this works, but at this time there isn't a point to this post route
