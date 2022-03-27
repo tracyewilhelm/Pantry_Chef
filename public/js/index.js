@@ -77,7 +77,6 @@ const ingFormHandler = async function (event) {
     aTag.appendChild(document.createTextNode(recipeItem));
     //give every recipe title a class of recipeLink, so we can add an event listener to everything with the class of "recipeLink"
     aTag.classList.add("recipeLink");
-    aTag.setAttribute("style", "color: white; text-decoration: none;");
     // aTag.setAttribute(
     //   "href",
     //   `https://api.spoonacular.com/recipes/${recipeID[i]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`

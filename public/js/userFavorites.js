@@ -5,3 +5,7 @@ $(userPageEl).on("click", function () {
 
 const userPageEl = document.querySelector("#favoriteRecipes");
 userPageEl.addEventListener("click", toUserPage);
+
+
+//  Create a post route from an event listener to grab the recipe selected as a favorite to add
+// that recipe into the database, then append it to the dom to be displayed in that user's table. 
