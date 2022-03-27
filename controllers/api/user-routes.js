@@ -32,6 +32,12 @@ router.get("/:id", async (req, res) => {
 //login
 router.post("/login", async (req, res) => {
   try {
+    console.log(
+      "here lies the login page. user: " +
+        req.body.user_name +
+        " pw: " +
+        req.body.user_password
+    );
     const userSearch = await User.findOne({
       where: {
         user_name: req.body.user_name,
@@ -39,7 +45,7 @@ router.post("/login", async (req, res) => {
     });
     if (!userSearch) {
       res.status(400).json({
-        message: "Incorrect user name or password. Please try again!",
+        message: "Incorrect user NAME or password. Please try again!",
       });
       return;
     }
@@ -50,7 +56,7 @@ router.post("/login", async (req, res) => {
 
     if (!validPassword) {
       res.status(400).json({
-        message: "Incorrect user name or password. Please try again!",
+        message: "Incorrect user name or PASSWORD. Please try again!",
       });
       return;
     }
@@ -61,7 +67,7 @@ router.post("/login", async (req, res) => {
 
       res
         .status(200)
-        .json({ user: dbUserData, message: "You are now logged in!" });
+        .json({ user: userSearch, message: "You are now logged in!" });
     });
   } catch (err) {
     console.log(err);
@@ -115,7 +121,7 @@ router.put("/addFavorite", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     console.log(
-      "we've landed in the user post user: " +
+      "we've landed in the user post! user: " +
         req.body.user_name +
         " pass: " +
         req.body.user_password
