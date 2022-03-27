@@ -1,8 +1,9 @@
-const signupFormHandler = async (event) => {
+const signupFormHandler = async function (event) {
   event.preventDefault();
 
   const signUp = document.querySelector("#username-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
+  console.log("we're going to try to post to /api/users", signUp, password);
 
   if (signUp && password) {
     const response = await fetch("/api/users", {
@@ -19,5 +20,5 @@ const signupFormHandler = async (event) => {
   }
 };
 document
-  .querySelector(".signup-form")
+  .querySelector("#signup-form")
   .addEventListener("submit", signupFormHandler);
