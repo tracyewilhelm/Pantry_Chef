@@ -77,7 +77,7 @@ const ingFormHandler = async function (event) {
     aTag.appendChild(document.createTextNode(recipeItem));
     //give every recipe title a class of recipeLink, so we can add an event listener to everything with the class of "recipeLink"
     aTag.classList.add("recipeLink");
-    aTag.setAttribute("style", "color:white, text-decoration:none");
+    aTag.setAttribute("style", "color:white; text-decoration:none;");
     liTag.appendChild(aTag);
     ulTag.appendChild(liTag);
   }
