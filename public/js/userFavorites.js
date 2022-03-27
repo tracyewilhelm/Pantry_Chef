@@ -8,6 +8,11 @@ const response = await fetch("/api/user/:id", {
 const userPageEl = document.querySelector("#favoriteRecipes");
 userPageEl.addEventListener("click", toUserPage);
 
+<<<<<<< HEAD
+
+//  Create a post route from an event listener to grab the recipe selected as a favorite to add
+// that recipe into the database, then append it to the dom to be displayed in that user's table. 
+=======
 const renderRecipeCard = async (recipeID, index) => {
   console.log(index);
   const recipeCardData = await fetch(
@@ -38,3 +43,4 @@ const renderRecipeCard = async (recipeID, index) => {
   pTag.textContent = directions;
   directionsEl.append(pTag);
 };
+>>>>>>> main

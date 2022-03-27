@@ -1,15 +1,38 @@
-# Pantry_Chef
-Check off the ingredients in your fridge and pantry and see what recipes you can make with just those ingredients
+# Pantry Chef
 
+## Description
+A full-stack recipe application that allows a user to enter their selected pantry ingredients and returns a list
+of recipes that include those ingredients. Users can view these recipes and store them to a list by creating an account.
 
-<!-- ROUTES -->
+## Table of Contents
+* [Technologies Used](#technologies)
+* [Screenshots](#screenshots)
+* [Links](#links)
+* [Contributors](#contributors)
 
-<!-- 
-Homepage route: GET route, check ingredients
-results route: click 'find recipes' GET route to results... list of 10 recipes
-recipe route: GET route to specific recipe
-recipe route: POST route/ event listener on a favorite button to save recipe in server memory
-    else ask to sign in/up.
-user route: GET route from event listener on login button to member page linked by uuid that populates with list of favorite recipes (or 404).
-user route: POST route
--->
+## Technologies Used
+* HTML
+* CSS
+* Bootstrap
+* Handlebars
+* JavaScript
+* JSON
+* MySQL
+* Axios
+* bcrypt
+* Express.js
+* Sequelize.js
+
+## Screenshots
+
+## Links
+[Deployed Live](https://awesome-pantry-chef.herokuapp.com)  
+
+[GitHub Repository](https://github.com/tracyewilhelm/Pantry_Chef.git)
+
+## Contributors
+[Tracye Willhelm](https://github.com/tracyewilhelm)<br>
+[Michael Bee](https://github.com/Michael-Bee)<br>
+[Samantha Rexroat](https://github.com/samanthajrexroat)<br>
+[Max Gorodesky](https://github.com/jmg5369)<br>
+[Joel Vazquez](https://github.com/Lumin-El)

@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   } else {
-    res.render("homepage", { message: "Please log in" });
+    res.render("homepage", { message: "Please log in or sign up" });
   }
 });
 
