@@ -94,6 +94,7 @@ const ingFormHandler = async function (event) {
 //now we are going to make the recipe card - we will do this by making a second api call using the recipe id, and bringing back the ingredients, image, and instructions
 const renderRecipeCard = async (recipeID, index) => {
   console.log(index);
+
   const recipeCardData = await fetch(
     `https://api.spoonacular.com/recipes/${recipeID[index]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
   );
@@ -104,21 +105,26 @@ const renderRecipeCard = async (recipeID, index) => {
   //make a const for the image that we got back from the api
   const recpImg = document.createElement("img");
   recpImg.setAttribute("src", `${recipeCard.image}`);
+
   recipeCardEl.prepend(recpImg);
   console.log(recipeCard.image);
 
   //get the title name from the data object and add it to the dom using query selecto recipeTitleEl
   recipeTitleEl.textContent = recipeCard.title;
   //take the array of ingredients and pull out the values of "original" and put them in the ingredientItem variable
+
   for (let i = 0; i < recipeCard.extendedIngredients.length; i++) {
     let ingredientItem = recipeCard.extendedIngredients[i].original;
     //make a list of those ingredient items
     const liTag = document.createElement("li");
+
     liTag.textContent = ingredientItem;
     ingredientListEl.append(liTag);
   } //pull out the instructions from the object and append it to the dom using the created "p-tag"
+
   const directions = recipeCard.instructions;
   const pTag = document.createElement("p");
+
   pTag.textContent = directions;
   directionsEl.append(pTag);
 };
