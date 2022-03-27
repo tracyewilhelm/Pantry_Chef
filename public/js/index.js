@@ -6,7 +6,7 @@ const recipeTitleEl = document.querySelector("#recipeTitle");
 const ingredientListEl = document.querySelector("#ingredientList");
 const directionsEl = document.querySelector("#directions");
 
-console.log(ingredientEl);
+// console.log(ingredientEl);
 
 //when we use this, or require dotenv it gets angry, so currently we have hard-coded our api key
 // import dotenv from "dotenv";

@@ -1,4 +1,4 @@
-const { Favorites } = require("../models");
+const { Favorite } = require("../models");
 
 const favoriteData = [
   {
@@ -12,6 +12,6 @@ const favoriteData = [
   },
 ];
 
-const seedFavorites = () => Favorites.bulkCreate(favoriteData);
+const seedFavorite = () => Favorite.bulkCreate(favoriteData);
 
-module.exports = seedFavorites;
+module.exports = seedFavorite;
