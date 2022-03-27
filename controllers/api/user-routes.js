@@ -115,16 +115,20 @@ router.put("/addFavorite", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     console.log(
-      "we've landed in the user post",
-      req.body.user_name,
-      req.body.user_password
+      "we've landed in the user post user: " +
+        req.session.user_name +
+        " pass: " +
+        req.session.user_password
     );
+
     const dbUserData = await User.create({
       user_name: req.body.user_name,
       user_password: req.body.user_password,
     });
 
     req.session.save(() => {
+      req.session.userId = dbUserData.id;
+      req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
       res.status(200).json(dbUserData);
