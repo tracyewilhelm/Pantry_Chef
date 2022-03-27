@@ -5,6 +5,7 @@ const signupFormHandler = async function (event) {
   const user_password = document
     .querySelector("#HPpassword-signup")
     .value.trim();
+
   console.log(
     "we're going to try to post to /api/users",
     user_name,

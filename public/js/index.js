@@ -5,7 +5,7 @@ const recipeCardEl = document.querySelector("#recipeCard");
 const recipeTitleEl = document.querySelector("#recipeTitle");
 const ingredientListEl = document.querySelector("#ingredientList");
 const directionsEl = document.querySelector("#directions");
-
+const saveBtnEl = document.querySelector("#recipeSaveBtn");
 // console.log(ingredientEl);
 
 //when we use this, or require dotenv it gets angry, so currently we have hard-coded our api key
@@ -94,6 +94,7 @@ const ingFormHandler = async function (event) {
 //now we are going to make the recipe card - we will do this by making a second api call using the recipe id, and bringing back the ingredients, image, and instructions
 const renderRecipeCard = async (recipeID, index) => {
   console.log(index);
+
   const recipeCardData = await fetch(
     `https://api.spoonacular.com/recipes/${recipeID[index]}/information?apiKey=15ed70dde7cc4c0fb86eff7fae59f587`
   );
@@ -104,27 +105,47 @@ const renderRecipeCard = async (recipeID, index) => {
   //make a const for the image that we got back from the api
   const recpImg = document.createElement("img");
   recpImg.setAttribute("src", `${recipeCard.image}`);
+
   recipeCardEl.prepend(recpImg);
   console.log(recipeCard.image);
 
   //get the title name from the data object and add it to the dom using query selecto recipeTitleEl
   recipeTitleEl.textContent = recipeCard.title;
   //take the array of ingredients and pull out the values of "original" and put them in the ingredientItem variable
+
   for (let i = 0; i < recipeCard.extendedIngredients.length; i++) {
     let ingredientItem = recipeCard.extendedIngredients[i].original;
     //make a list of those ingredient items
     const liTag = document.createElement("li");
+
     liTag.textContent = ingredientItem;
     ingredientListEl.append(liTag);
   } //pull out the instructions from the object and append it to the dom using the created "p-tag"
+
   const directions = recipeCard.instructions;
   const pTag = document.createElement("p");
+
   pTag.textContent = directions;
   directionsEl.append(pTag);
+  //give the save button the name attribute with the value of the recipe number
+  saveBtnEl.setAttribute("name", `${recipeID[index]}`);
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);
 
+//when the user clicks the MyRecipes button, it will redirect them to their user page, which which will render a list of their favorited recipe names. When they click on the recipe names, the recipe will show up.
+
+//find the id associated with the save button
+const saveRecipe = function (event) {
+  event.preventDefault();
+  console.log(saveBtnEl.getAttribute("name"));
+};
+//make a put request to /addFaforite
+
+//make an event listener that listens for a click on the save button and runs the put function
+saveBtnEl.addEventListener("click", saveRecipe);
+
+//==========================================
 // now make your call to the back end with your data - we know this works, but at this time there isn't a point to this post route
 // const results = await fetch(`/api/results`, {
 //   method: "POST",
