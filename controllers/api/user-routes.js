@@ -94,6 +94,7 @@ router.post("/addFavorite", async (req, res) => {
   const userId = req.session.user.id; //this gives us the user id from the url that they logged in as
   const favRecpID = req.body.favRecpID; //make sure this recipeID matches where they've captured it on the front end
   //this is searching for our user by their user id
+  const favRecpTitle = req.body.favRecpTitle;
   const userObj = await User.findOne({
     where: {
       id: userId,
@@ -109,6 +110,7 @@ router.post("/addFavorite", async (req, res) => {
   if (!recipeSearch) {
     const newFav = await Favorite.create({
       id: favRecpID,
+      name: favRecpTitle,
     });
     //add the newFav recipe by it's recipe ID and match it to our user (that we have found by their id) and putting it in the through table that we called userFavorite (this is your mystery table)
     userObj.addFavorite(newFav);

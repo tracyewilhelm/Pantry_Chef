@@ -129,6 +129,7 @@ const renderRecipeCard = async (recipeID, index) => {
   directionsEl.append(pTag);
   //give the save button the name attribute with the value of the recipe number
   saveBtnEl.setAttribute("name", `${recipeID[index]}`);
+  saveBtnEl.setAttribute("value", recipeCard.title);
 };
 
 ingredientEl.addEventListener("submit", ingFormHandler);
@@ -138,6 +139,7 @@ const saveRecipe = async function (event) {
   event.preventDefault();
   console.log(saveBtnEl.getAttribute("name"));
   const favRecpID = saveBtnEl.getAttribute("name");
+  const favRecpTitle = saveBtnEl.getAttribute("value");
   console.log(favRecpID);
 
   if (saveBtnEl) {
@@ -146,6 +148,7 @@ const saveRecipe = async function (event) {
       method: "POST",
       body: JSON.stringify({
         favRecpID,
+        favRecpTitle,
       }),
       headers: { "Content-Type": "application/json" },
     });
