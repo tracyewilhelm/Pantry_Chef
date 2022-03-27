@@ -114,6 +114,11 @@ router.put("/addFavorite", async (req, res) => {
 //create new user
 router.post("/", async (req, res) => {
   try {
+    console.log(
+      "we've landed in the user post",
+      req.body.user_name,
+      req.body.user_password
+    );
     const dbUserData = await User.create({
       user_name: req.body.user_name,
       user_password: req.body.user_password,
