@@ -4,9 +4,10 @@
         <h1 class="section-title">Favorites:</h1>
 
         <div class="favorite">
-            {{#each userFavorite.id as |id|}}
-        <ul class="list-group" id="favorites">
-            <li>{{id}}</li>
+            {{#each justTheFacts as |justTheFactses|}}
+        <ul class="list-group" id="favorites" style="color: white">
+            <li>{{name}}</li>
         </ul>
+            {{/each}}
         </div>
     </div>
