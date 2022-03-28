@@ -721,11 +721,11 @@
                     
                 </div>
                 <div>
-                    <button id="recipeSaveBtn"><a class="btn btn-primary btn-lg mt-3" data-bs-toggle="button" aria-pressed="false" autocomplete="off"  role="button"><i class="bi bi-heart-fill"></i> Save</a>
+                    <button id="recipeSaveBtn"><a class="btn btn-primary mt-3" data-bs-toggle="button" aria-pressed="false" autocomplete="off"  role="button"><i class="bi bi-heart-fill"></i> Save</a>
                     {{#if loggedIn }}
-                    <a href="/api/users/{{userID}}" class="btn btn-primary btn-sm" role="button">My Favorites</a></button>
+                    <a href="/api/users/{{userID}}" class="btn btn-primary mt-3" role="button">My Favorites</a></button>
                     {{else }}
-                    <button  class="btn btn-primary btn-lg mt-3" disabled >Please log in to view Favorites</button>
+                    <button  class="btn btn-primary mt-3" disabled >Please log in to view Favorites</button>
                     {{/if}}</div>
             </div>
         </div>   
