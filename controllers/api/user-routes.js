@@ -152,13 +152,21 @@ router.post("/", async (req, res) => {
 router.get("/favorite", async (req, res) => {
   try {
     console.log("return favorites for user");
-    let theFavorites = await User.findAll({
-      where: {
-        id: req.session.user?.id || 0,
-      },
-      include: [{ model: Favorite, required: false }],
+    const theFavorites = await Favorite.findAll({
+      include: [
+        {
+          model: User,
+          where: {
+            id: req.session.user?.id || 0,
+          },
+          required: true,
+        },
+      ],
     });
-    res.render("userpage");
+    // const map = theFavorites.map(User.get({ plain: true }));
+
+    res.render("userpage", { theFavorites });
+    // res.status(200).json(theFavorites);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
