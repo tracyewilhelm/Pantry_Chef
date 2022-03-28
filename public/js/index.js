@@ -102,17 +102,27 @@ const renderRecipeCard = async (recipeID, index) => {
   //put all of the information from the fetch into readible form
   const recipeCard = await recipeCardData.json();
 
+  //clear the previous image (child of the div that holds the image)
+  recipeCardEl.removeChild(recipeCardEl.children[0]);
   //make a const for the image that we got back from the api
   const recpImg = document.createElement("img");
   recpImg.setAttribute("src", `${recipeCard.image}`);
-
   recipeCardEl.prepend(recpImg);
   console.log(recipeCard.image);
 
   //get the title name from the data object and add it to the dom using query selecto recipeTitleEl
   recipeTitleEl.textContent = recipeCard.title;
-  //take the array of ingredients and pull out the values of "original" and put them in the ingredientItem variable
 
+  //clear out the starter text
+  function deleteChild(el) {
+    while (el.hasChildNodes()) {
+      el.removeChild(el.firstChild);
+      // child = el.lastElementChild;
+    }
+    return;
+  }
+  deleteChild(ingredientListEl);
+  //take the array of ingredients and pull out the values of "original" and put them in the ingredientItem variable
   for (let i = 0; i < recipeCard.extendedIngredients.length; i++) {
     let ingredientItem = recipeCard.extendedIngredients[i].original;
     //make a list of those ingredient items
@@ -121,7 +131,7 @@ const renderRecipeCard = async (recipeID, index) => {
     liTag.textContent = ingredientItem;
     ingredientListEl.append(liTag);
   } //pull out the instructions from the object and append it to the dom using the created "p-tag"
-
+  deleteChild(directionsEl);
   const directions = recipeCard.instructions;
   const pTag = document.createElement("p");
 
