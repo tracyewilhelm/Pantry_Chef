@@ -158,7 +158,7 @@ router.get("/favorite", async (req, res) => {
       },
       include: [{ model: Favorite, required: false }],
     });
-    res.status(200).json(theFavorites);
+    res.render("userpage");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
