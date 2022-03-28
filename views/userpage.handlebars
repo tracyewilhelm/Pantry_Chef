@@ -2,40 +2,12 @@
 {{!-- this should list out all of the recipe id's that the user has saved --}}
     <div class="recipelist-container container-fluid row p-4">
         <h1 class="section-title">Favorites:</h1>
+
         <div class="favorite">
-            {{#each favorite as |favorite|}}
-        <ul class="list-group" id="favorites">
-            <li>{{favoriteId}}</li>
+            {{#each justTheFacts as |justTheFactses|}}
+        <ul class="list-group" id="favorites" style="color: white">
+            <li>{{name}}</li>
         </ul>
+            {{/each}}
         </div>
     </div>
-
-<!-- Recipes -->
-<div class="recipes-container p-4">
-    <h1 class="section-title">Recipes:</h1>
-    <div class="row justify-content-center" >
-        <div class="col-md-6 mb-3">
-            <div class="card shadow rounded" style="min-width: 250px;" id="recipeCard">
-                
-                <div class="card-body">
-                    <h5 class="card-title" style="color: #ff9000" id="recipeTitle">Click on name to see recipe</h5>
-                    <p class="card-text" style="color: #ffcf91"></p>
-                </div>
-                <ul id="ingredientList" class="list-group list-group-flush">
-                    
-                </ul>
-                <div class="card-body" id="directions">
-                    <p >Directions</p>
-                    
-                </div>
-                <div>
-                    <a class="btn btn-primary btn-sm m-3" data-bs-toggle="button" aria-pressed="false" autocomplete="off" id="recipeSaveBtn" role="button"><i class="bi bi-heart-fill"></i> Save</a>
-                    {{#if loggedIn }}
-                    <a href="/api/users/{{userID}}" class="btn btn-primary btn-sm m-3" role="button">My Favorites</a>
-                    {{else }}
-                    <button  class="btn btn-primary btn-sm m-3" disabled >Please log in to view Favorites</button>
-                    {{/if}}</div>
-            </div>
-        </div>   
-    </div>
-</div>

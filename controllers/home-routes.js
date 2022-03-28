@@ -36,7 +36,7 @@ router.get("/favorite", async (req, res) => {
     console.log(justTheFacts);
 
     res.render("userpage", { justTheFacts });
-    // res.status(200).json(theFavorites);
+    //res.status(200).json(justTheFacts);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
