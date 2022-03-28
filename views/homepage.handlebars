@@ -704,7 +704,7 @@
                     <h5 class="card-title" style="color: #ff9000" id="recipeTitle">Click on name to see recipe</h5>
                     <p class="card-text" style="color: #ffcf91"></p>
                 </div>
-                <ul id="ingredientList" class="list-group list-group-flush">
+                <ul id="ingredientList" class="list-group list-group-flush p-3">
                     {{!-- <li class="list-group-item">8 flour tortillas</li>
                     <li class="list-group-item">1 lb ground beef</li>
                     <li class="list-group-item">1 can mild enchilada sauce</li>
@@ -712,7 +712,7 @@
                     <li class="list-group-item">2 cups shredded cheddar cheese</li> --}}
                 </ul>
                 <div class="card-body" id="directions">
-                    <p >Directions</p>
+                    <p><b>Directions:</b></p>
                     {{!-- <p>2. Fold tortillas in half and place folded side down in dish and set aside.</p>
                     <p>3. cook ground beef over medium high heat until no longer pink. add 1/4 cup enchilada sauce, bean and corn salsa, and 1 cup of shredded cheese. Stir to combine.</p>
                     <p>4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam is facing down.</p>
@@ -720,11 +720,11 @@
                     
                 </div>
                 <div>
-                    <button id="recipeSaveBtn"><a class="btn btn-primary btn-lg mt-3" data-bs-toggle="button" aria-pressed="false" autocomplete="off"  role="button"><i class="bi bi-heart-fill"></i> Save</a>
+                    <button id="recipeSaveBtn"><a class="btn btn-primary mt-3" data-bs-toggle="button" aria-pressed="false" autocomplete="off"  role="button"><i class="bi bi-heart-fill"></i> Save</a>
                     {{#if loggedIn }}
-                    <a href="/api/users/{{userID}}" class="btn btn-primary btn-sm" role="button">My Favorites</a></button>
+                    <a href="/api/users/{{userID}}" class="btn btn-primary mt-3" role="button">My Favorites</a></button>
                     {{else }}
-                    <button  class="btn btn-primary btn-lg mt-3" disabled >Please log in to view Favorites</button>
+                    <button  class="btn btn-primary mt-3" disabled >Please log in to view Favorites</button>
                     {{/if}}</div>
             </div>
         </div>   

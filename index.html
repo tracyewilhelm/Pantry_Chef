@@ -49,6 +49,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#signup-form">Sign Up / Log In</a>
                     </li>
+                    <ul class="nav navbar-nav navbar-right">
+                        {{# if loggedin}}
+                            <li><button class="btn btn-outline-light" type="submit" href="/logout">Log Out</button></li>
+                        {{else }}
+                            <li><button class="btn btn-outline-light" type="submit" href="/login">Log In</button></li>
+                        {{/if}}
+                    </ul> 
                 </ul>
             </div>
         </nav>
@@ -443,8 +450,8 @@
                         <p>4. Divide beef mixture evenly in folded tortillas; wrap tortillas around filling and roll so seam
                             is facing down.</p>
                         <p>5. Top with remaining enchilada sauce and cheese. Cover with foil and bake 40-45 minutes.</p>
-                        <a class="btn btn-primary btn-sm" data-bs-toggle="button" aria-pressed="false" autocomplete="off" id="recipeSaveBtn" role="button"><i class="bi bi-heart-fill"></i> Save</a>
-                        <a class="btn btn-primary btn-sm" id="myRecipesBtn" role="button">My Recipes</a>
+                        <a class="btn btn-primary btn-sm m-3" data-bs-toggle="button" aria-pressed="false" autocomplete="off" id="recipeSaveBtn" role="button"><i class="bi bi-heart-fill"></i> Save</a>
+                        <a class="btn btn-primary btn-sm m-3" id="myRecipesBtn" role="button">My Recipes</a>
                     </div>
                 </div>
             </div>
