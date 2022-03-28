@@ -15,6 +15,8 @@ of recipes that include those ingredients. Users can view these recipes and stor
 * CSS
 * Bootstrap
 * Handlebars.js
+* VSCode
+* Node.js
 * JavaScript
 * JSON
 * MySQL
