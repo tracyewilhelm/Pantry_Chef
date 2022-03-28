@@ -7,9 +7,12 @@ const myFavoriteEl = document.querySelector("#myFavorites");
 const showFavorites = async function (event) {
   event.preventDefault();
   if (something) {
-    const response = await fetch("/api/users/:id", {
+    //if I'm logged in"
+    const response = await fetch("/api/users/favorite", {
+      //the loggedin user
       method: "POST",
       body: JSON.stringify({
+        //can't use hody in the GET
         something,
       }),
       headers: { "Content-Type": "application/json" },
