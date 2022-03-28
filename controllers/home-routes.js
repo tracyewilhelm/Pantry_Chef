@@ -33,7 +33,6 @@ router.get("/favorite", async (req, res) => {
       favorite.get({ plain: true })
     );
 
-   
     console.log(justTheFacts);
 
     res.render("userpage", { justTheFacts });
