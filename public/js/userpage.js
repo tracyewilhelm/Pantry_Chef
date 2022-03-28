@@ -8,7 +8,7 @@ const showFavorites = async function (event) {
   event.preventDefault();
   if (something) {
     //if I'm logged in"
-    const response = await fetch("/api/users/favorite", {
+    const response = await fetch("/favorite", {
       //the loggedin user
       method: "POST",
       body: JSON.stringify({
@@ -20,4 +20,4 @@ const showFavorites = async function (event) {
   }
 };
 //this is the even listener that will call the showFavorites function
-myFavoriteEl.addEventListener("click", showFavorites);
+// myFavoriteEl.addEventListener("click", showFavorites);
