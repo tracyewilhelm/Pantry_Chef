@@ -14,16 +14,20 @@ of recipes that include those ingredients. Users can view these recipes and stor
 * HTML
 * CSS
 * Bootstrap
-* Handlebars
+* Handlebars.js
 * JavaScript
 * JSON
 * MySQL
-* Axios
 * bcrypt
 * Express.js
 * Sequelize.js
+* Spoonacular API
 
 ## Screenshots
+![Landing Page](./public/images/screenshots/landing-shot.png)
+![Ingredients List](./public/images/screenshots/ingredients-shot.png)
+![Recipe Search Results](./public/images/screenshots/results-shot.png)
+![User Favorites List](./public/images/screenshots/favorites-shot.png)
 
 ## Links
 [Deployed Live](https://awesome-pantry-chef.herokuapp.com)  
