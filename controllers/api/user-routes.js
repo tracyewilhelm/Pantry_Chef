@@ -149,36 +149,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/favorite", async (req, res) => {
-  try {
-    console.log("return favorites for user");
-    let theFavorites = await User.findAll({
-      where: {
-        id: req.session.user?.id || 0,
-      },
-      include: [{ model: Favorite, required: false }],
-    });
-    res.render("userpage");
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-/*
-  const spoonData = req.body.title; // we want just the title from the data that was returned using the api call
-  console.log(spoonData);
-  try {
-    res.render("userpage", {
-      spoonData,
-      userID: req.session.user?.id || 0,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err); 
-  }*/
-
 //return an error or something if there's no logged in user
 //make sure the front end checks for the state where there are no recipes
 
