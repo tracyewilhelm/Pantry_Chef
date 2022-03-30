@@ -1,3 +1,4 @@
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 # Pantry Chef
 
 ## Description
@@ -8,6 +9,7 @@ of recipes that include those ingredients. Users can view these recipes and stor
 * [Technologies Used](#technologies)
 * [Screenshots](#screenshots)
 * [Links](#links)
+* [License](#license)
 * [Contributors](#contributors)
 
 ## Technologies Used
@@ -29,12 +31,13 @@ of recipes that include those ingredients. Users can view these recipes and stor
 ![Landing Page](./public/images/screenshots/landing-shot.png)
 ![Ingredients List](./public/images/screenshots/ingredients-shot.png)
 ![Recipe Search Results](./public/images/screenshots/results-shot.png)
-![User Favorites List](./public/images/screenshots/favorites-shot.png)
 
 ## Links
 [Deployed Live](https://awesome-pantry-chef.herokuapp.com)  
-
 [GitHub Repository](https://github.com/tracyewilhelm/Pantry_Chef.git)
+
+## License
+MIT
 
 ## Contributors
 [Tracye Willhelm](https://github.com/tracyewilhelm)<br>
